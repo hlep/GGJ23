@@ -17,14 +17,14 @@ public class LineTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public bool CheckLineIntersect(Vector3 startPoint, Vector3 endPoint)
     {
         foreach (var TwoPoints in startEndPair)
         {
-            if (doIntersect(startPoint, TwoPoints.Key, endPoint, TwoPoints.Value))
+            if (doIntersect(startPoint, endPoint, TwoPoints.Key, TwoPoints.Value))
                 return true;
         }
 
@@ -52,7 +52,7 @@ public class LineTracker : MonoBehaviour
     // 0 --> p, q and r are collinear
     // 1 --> Clockwise
     // 2 --> Counterclockwise
-    static float orientation(Vector3 p, Vector3 q, Vector3 r)
+    static int orientation(Vector3 p, Vector3 q, Vector3 r)
     {
         // See https://www.geeksforgeeks.org/orientation-3-ordered-Vector3s/
         // for details of below formula.
@@ -70,10 +70,10 @@ public class LineTracker : MonoBehaviour
     {
         // Find the four orientations needed for general and
         // special cases
-        float o1 = orientation(p1, q1, p2);
-        float o2 = orientation(p1, q1, q2);
-        float o3 = orientation(p2, q2, p1);
-        float o4 = orientation(p2, q2, q1);
+        int o1 = orientation(p1, q1, p2);
+        int o2 = orientation(p1, q1, q2);
+        int o3 = orientation(p2, q2, p1);
+        int o4 = orientation(p2, q2, q1);
 
         // General case
         if (o1 != o2 && o3 != o4)
