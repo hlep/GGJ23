@@ -34,6 +34,7 @@ public class EarthRandomizer : MonoBehaviour
     [SerializeField] private SpriteShapeController m_EarthShape;
     [SerializeField] private Vector3 startLocation;
     [SerializeField] private Vector2 cellSize;
+    [SerializeField] private SpriteShapeController spriteShapeController;
 
     static RowSetup[] GridSetup = {
         new RowSetup(2, 3, 3, 2),
@@ -49,8 +50,8 @@ public class EarthRandomizer : MonoBehaviour
     {
         for (int i = 0; i < GridSetup.Length; i++)
         {
-            int currentLeftMaxCellsInclusive = GridSetup[i].leftRequiredCells + GridSetup[i].leftOptionalCells + 1;
-            int currentRightMaxCellsInclusive = GridSetup[i].rightRequiredCells + GridSetup[i].rightOptionalCells + 1;
+            int currentLeftMaxCellsInclusive = GridSetup[i].leftRequiredCells + GridSetup[i].leftOptionalCells;
+            int currentRightMaxCellsInclusive = GridSetup[i].rightRequiredCells + GridSetup[i].rightOptionalCells;
             Vector3 leftPos = startLocation + new Vector3(-currentLeftMaxCellsInclusive * cellSize.x, i * cellSize.y);
             Vector3 rightPos = startLocation + new Vector3(currentRightMaxCellsInclusive * cellSize.x, i * cellSize.y);
 
@@ -63,8 +64,8 @@ public class EarthRandomizer : MonoBehaviour
             }
             else
             {
-                int prevLeftMaxCellsExclusive = GridSetup[i - 1].leftRequiredCells + GridSetup[i - 1].leftOptionalCells + 1;
-                int prevRightMaxCellsExclusive = GridSetup[i - 1].rightRequiredCells + GridSetup[i - 1].rightOptionalCells + 1;
+                int prevLeftMaxCellsExclusive = GridSetup[i - 1].leftRequiredCells + GridSetup[i - 1].leftOptionalCells;
+                int prevRightMaxCellsExclusive = GridSetup[i - 1].rightRequiredCells + GridSetup[i - 1].rightOptionalCells;
                 Vector3 prevLeftPos = startLocation + new Vector3(-prevLeftMaxCellsExclusive * cellSize.x, (i - 1) * cellSize.y);
                 Vector3 prevRightPos = startLocation + new Vector3(prevRightMaxCellsExclusive * cellSize.x, (i - 1) * cellSize.y);
 
@@ -154,8 +155,7 @@ public class EarthRandomizer : MonoBehaviour
         return Mathf.Min(cellsCountByRow[rowIndex - 1] + 1, requiredCells + optionalCells + 1);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Generator_GenerateIsland()
     {
         Vector3[] leftPositions = new Vector3[GridSetup.Length];
         Vector3[] rightPositions = new Vector3[GridSetup.Length];
@@ -180,7 +180,8 @@ public class EarthRandomizer : MonoBehaviour
 
         var result = leftPositions.Prepend(startLocation).Concat(rightPositions.Reverse()).ToArray();
 
-        try {
+        try
+        {
             m_EarthShape.spline.SetPosition(0, result[0]);
             m_EarthShape.spline.SetPosition(1, result[1]);
             m_EarthShape.spline.SetPosition(2, result[2]);
@@ -188,19 +189,29 @@ public class EarthRandomizer : MonoBehaviour
             {
                 // Debug.DrawLine(result[i - 1], result[i], Color.red, 10, false);
                 m_EarthShape.spline.InsertPointAt(i, result[i]);
-                m_EarthShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+                m_EarthShape.spline.SetTangentMode(i, ShapeTangentMode.Linear);
             }
         }
-        catch {
+        catch
+        {
             Debug.Log("Wow");
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        spriteShapeController = GetComponentInParent<SpriteShapeController>();
+        Generator_GenerateIsland();
+
+        spriteShapeController.RefreshSpriteShape();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DrawMaximizedIsland(Color.red, 0, true);
+        /*DrawMaximizedIsland(Color.red, 0, true);
         DrawMinimizedIsland(Color.black, 0);
-        DrawVerticalLines(Color.black, 0);
+        DrawVerticalLines(Color.black, 0);*/
     }
 }
