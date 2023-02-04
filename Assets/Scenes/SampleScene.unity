@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -7.2779922, y: -1.2590594, z: 0}
+    - position: {x: -9, y: -2, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 0.009089291, y: 4.491275, z: 0}
+    - position: {x: 0.009089291, y: 4, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 8.285423, y: -1.218754, z: 0}
+    - position: {x: 9, y: -2, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -299,14 +299,14 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -7.476223, y: -1.007853}
-  - {x: -0.3340484, y: 4.628133}
-  - {x: -0.00084419595, y: 4.8018994}
-  - {x: 0.34274578, y: 4.6498475}
-  - {x: 8.467146, y: -0.9553583}
-  - {x: 8.285423, y: -1.218754}
-  - {x: -3.243033, y: -1.2486098}
-  - {x: -7.476223, y: -1.007853}
+  - {x: -9.17738, y: -1.7336612}
+  - {x: -0.30710405, y: 4.17389}
+  - {x: 0.009322291, y: 4.3005257}
+  - {x: 0.3253132, y: 4.1736827}
+  - {x: 9.177628, y: -1.7338268}
+  - {x: 9, y: -2}
+  - {x: -4.333333, y: -2}
+  - {x: -9.17738, y: -1.7336612}
 --- !u!1971053207 &77248728
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -363,8 +363,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 0.49546194, y: 1.6458167, z: 0}
-    m_Extent: {x: 7.9716845, y: 3.1560826, z: 0}
+    m_Center: {x: 0.00012397766, y: 1.0170932, z: 0}
+    m_Extent: {x: 9.177504, y: 3.283432, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &77248729
 Transform:
@@ -425,14 +425,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -7.476223, y: -1.007853}
-      - {x: -0.3340484, y: 4.628133}
-      - {x: -0.00084419595, y: 4.8018994}
-      - {x: 0.34274578, y: 4.6498475}
-      - {x: 8.467146, y: -0.9553583}
-      - {x: 8.285423, y: -1.218754}
-      - {x: -3.243033, y: -1.2486098}
-      - {x: -7.476223, y: -1.007853}
+    - - {x: -9.17738, y: -1.7336612}
+      - {x: -0.30710405, y: 4.17389}
+      - {x: 0.009322291, y: 4.3005257}
+      - {x: 0.3253132, y: 4.1736827}
+      - {x: 9.177628, y: -1.7338268}
+      - {x: 9, y: -2}
+      - {x: -4.333333, y: -2}
+      - {x: -9.17738, y: -1.7336612}
   m_UseDelaunayMesh: 0
 --- !u!1 &310485924
 GameObject:
@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310485924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -563,10 +563,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c931ef9654e63145a83d890c738eb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreeStagesDurations: []
-  spriteResolver: {fileID: 0}
-  spriteLibrary: {fileID: 0}
-  spriteLibraryCategoryName: 
+  spriteResolver: {fileID: 310485927}
+  spriteLibrary: {fileID: 310485928}
+  stagesSetup:
+  - spriteLabel: Stage3
+    brokenSpriteLabels: []
+    duration: 2
+  - spriteLabel: Stage4
+    brokenSpriteLabels: []
+    duration: 2
+  - spriteLabel: Stage5
+    brokenSpriteLabels: []
+    duration: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +901,9 @@ MonoBehaviour:
   - {fileID: 49952144}
   - {fileID: 2141665254}
   - {fileID: 898968388}
+  Sprite1: {fileID: 0}
+  Sprite2: {fileID: 0}
+  Sprite3: {fileID: 0}
   ActiveActionSprite: {fileID: 21300000, guid: ccf8ae63d8f636a4db1cf149d366a815, type: 3}
   EmptyActionSprite: {fileID: 21300000, guid: b403b6afd2e3ef44b835de67b3b02622, type: 3}
 --- !u!4 &1749468270
@@ -942,10 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f32377f3deb6014fa35e133bfdd1392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreeStagesDurations:
-  - 2
-  - 2
-  - 2
 --- !u!4 &1762510201
 Transform:
   m_ObjectHideFlags: 0
