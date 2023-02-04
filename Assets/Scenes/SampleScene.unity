@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootPrefab: {fileID: 617457900901708638, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
+  m_LineTracker: {fileID: 1766320901}
 --- !u!4 &663308783
 Transform:
   m_ObjectHideFlags: 0
