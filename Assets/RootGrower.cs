@@ -42,10 +42,6 @@ public class RootGrower : MonoBehaviour
             Vector3 NewPos = Vector3.Lerp(controller.spline.GetPosition(1), m_rootEnd, Mathf.SmoothStep(0f, 1f, Progress));
 
             controller.spline.SetPosition(1, NewPos);
-
-            //Vector3 NewPos = Vector3.Lerp(controller.spline.GetPosition(1), m_rootEnd, MaxGrowSpeed*Time.deltaTime);
-
-
         } 
         else if(!m_finishedGrowing && m_rootEnd != Vector3.zero)
         {
@@ -58,7 +54,7 @@ public class RootGrower : MonoBehaviour
     {
         m_rootEnd = p;
         MovementTime = Vector3.Distance(m_rootEnd, controller.spline.GetPosition(1)) / MaxGrowSpeed;
-
+/*
         //some offset to avoid hitting other root when splitting from the same root
         Vector3 StartPos = Vector3.Lerp(controller.spline.GetPosition(1), p, 0.1f);
 
@@ -69,7 +65,7 @@ public class RootGrower : MonoBehaviour
             m_rootEnd = hit.point;
             print("collision hit!");
             print(hit.collider.gameObject.name);
-        }
+        }*/
     }
    
 }
