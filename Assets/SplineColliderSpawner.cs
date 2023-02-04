@@ -32,7 +32,7 @@ public class SplineColliderSpawner : MonoBehaviour
         secondCollider.radius = radius;
         secondCollider.offset = secondPoint;
 
-        secondCollider.enabled = true;
+        secondCollider.enabled = false;
     }
 
     // Update is called once per frame

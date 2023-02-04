@@ -5,6 +5,10 @@ using UnityEngine.U2D;
 
 public class RootGrower : MonoBehaviour
 {
+
+    public delegate void GrowEnded();
+    public GrowEnded growEndDelegate;
+
     [SerializeField]
     SpriteShapeController controller;
 
@@ -45,8 +49,10 @@ public class RootGrower : MonoBehaviour
         } 
         else if(!m_finishedGrowing && m_rootEnd != Vector3.zero)
         {
+            //return an action
             colliderSpawner.EnableSecondCollider();
             m_finishedGrowing = true;
+            growEndDelegate();
         }
     }
 

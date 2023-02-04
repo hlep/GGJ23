@@ -60,6 +60,7 @@ public class ClickCatcher : MonoBehaviour
 
                         RootGrower grower = SpawnedRoot.GetComponent<RootGrower>();
                         grower.SetRootEndpoint(ray.origin);
+                        grower.growEndDelegate = EndGrow;
 
                         m_LineTracker.AddNewLine(m_SavedClick, ray.origin);
 
@@ -101,5 +102,10 @@ public class ClickCatcher : MonoBehaviour
     {
         m_ClickActive = false;
         m_SavedClick = Vector3.zero;
+    }
+
+    private void EndGrow()
+    {
+        m_ActionsTracker.UpdateActions(1);
     }
 }
