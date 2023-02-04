@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 
-
+[Serializable]
 public struct RowSetup
 {
     public RowSetup(int LOC, int LRC, int RRC, int ROC)
@@ -34,9 +35,9 @@ public class EarthRandomizer : MonoBehaviour
     [SerializeField] private SpriteShapeController m_EarthShape;
     [SerializeField] private Vector3 startLocation;
     [SerializeField] private Vector2 cellSize;
-    [SerializeField] private SpriteShapeController spriteShapeController;
+    [SerializeField] private ShapeTangentMode shapeTangentMode = ShapeTangentMode.Continuous;
 
-    static RowSetup[] GridSetup = {
+    [SerializeField] private RowSetup[] GridSetup = {
         new RowSetup(2, 3, 3, 2),
         new RowSetup(1, 6, 6, 1),
         new RowSetup(2, 7, 7, 2),
@@ -171,8 +172,8 @@ public class EarthRandomizer : MonoBehaviour
             int leftMaxCellsExclusive = Generator_GetMaxCellsExclusive(i, Row.leftRequiredCells, Row.leftOptionalCells, leftCellsCountByRow);
             int rightMaxCellsExclusive = Generator_GetMaxCellsExclusive(i, Row.rightRequiredCells, Row.rightOptionalCells, rightCellsCountByRow);
 
-            leftCellsCountByRow[i] = Random.Range(leftMinCellsInclusive, leftMaxCellsExclusive);
-            rightCellsCountByRow[i] = Random.Range(rightMinCellsInclusive, rightMaxCellsExclusive);
+            leftCellsCountByRow[i] = UnityEngine.Random.Range(leftMinCellsInclusive, leftMaxCellsExclusive);
+            rightCellsCountByRow[i] = UnityEngine.Random.Range(rightMinCellsInclusive, rightMaxCellsExclusive);
 
             leftPositions[i] = startLocation + new Vector3(-leftCellsCountByRow[i] * cellSize.x, i * cellSize.y);
             rightPositions[i] = startLocation + new Vector3(rightCellsCountByRow[i] * cellSize.x, i * cellSize.y);
@@ -182,29 +183,33 @@ public class EarthRandomizer : MonoBehaviour
 
         try
         {
-            m_EarthShape.spline.SetPosition(0, result[0]);
-            m_EarthShape.spline.SetPosition(1, result[1]);
-            m_EarthShape.spline.SetPosition(2, result[2]);
-            for (int i = 3; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
-                // Debug.DrawLine(result[i - 1], result[i], Color.red, 10, false);
-                m_EarthShape.spline.InsertPointAt(i, result[i]);
-                m_EarthShape.spline.SetTangentMode(i, ShapeTangentMode.Linear);
+                // first three points are predefined
+                if (i < 3)
+                {
+                    m_EarthShape.spline.SetPosition(i, result[i]);
+                }
+                else
+                {
+                    m_EarthShape.spline.InsertPointAt(i, result[i]);
+                }
+                
+                m_EarthShape.spline.SetTangentMode(i, shapeTangentMode);
             }
         }
         catch
         {
             Debug.Log("Wow");
         }
+
+        m_EarthShape.RefreshSpriteShape();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteShapeController = GetComponentInParent<SpriteShapeController>();
         Generator_GenerateIsland();
-
-        spriteShapeController.RefreshSpriteShape();
     }
 
     // Update is called once per frame
