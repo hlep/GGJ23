@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310485924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -566,15 +566,34 @@ MonoBehaviour:
   spriteResolver: {fileID: 310485927}
   spriteLibrary: {fileID: 310485928}
   stagesSetup:
+  - spriteLabel: Stage1
+    brokenSpriteLabels: []
+    duration: 2
+    treeWeight: 0
+  - spriteLabel: Stage2
+    brokenSpriteLabels: []
+    duration: 2
+    treeWeight: 0
   - spriteLabel: Stage3
     brokenSpriteLabels: []
     duration: 2
+    treeWeight: 0
   - spriteLabel: Stage4
     brokenSpriteLabels: []
     duration: 2
+    treeWeight: 0
   - spriteLabel: Stage5
     brokenSpriteLabels: []
     duration: 2
+    treeWeight: 0
+  - spriteLabel: Stage6
+    brokenSpriteLabels: []
+    duration: 2
+    treeWeight: 0
+  - spriteLabel: Stage7
+    brokenSpriteLabels: []
+    duration: 2
+    treeWeight: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +718,7 @@ MonoBehaviour:
   rootPrefab: {fileID: 617457900901708638, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
   m_LineTracker: {fileID: 1766320901}
   m_ActionsTracker: {fileID: 1749468269}
-  m_EnergyManager: {fileID: 2103545265}
+  m_EnergyManager: {fileID: 0}
 --- !u!4 &663308783
 Transform:
   m_ObjectHideFlags: 0

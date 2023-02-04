@@ -18,7 +18,7 @@ public class EnergyManager : MonoBehaviour
     void Update()
     {
         CurrentEnergy = Mathf.Min(MaxEnergy, CurrentEnergy + EnergyRegenPerSec * Time.deltaTime);
-        print(CurrentEnergy);
+        // print(CurrentEnergy);
     }
 
     public void ConsumeEnergy(float energy)

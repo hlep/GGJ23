@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 public class ClickCatcher : MonoBehaviour
 {
     Camera m_Camera;
-    Vector3 m_SavedClick;
-    bool m_ClickActive = false;
+    Vector3 m_RootBuildingStartPosition;
+    bool m_RootBuildingStarted = false;
     public GameObject rootPrefab;
     //int m_LatestLayer = 0;
 
@@ -35,24 +35,21 @@ public class ClickCatcher : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             var collider = Physics2D.OverlapPoint(mousePosition);
-            //if (collider)
-          
 
-            //Ray ray = m_Camera.ScreenPointToRay(mousePosition);
-            //RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+          
             if (collider)
             {
-                if (m_ClickActive && collider.gameObject.tag == "Earth")
+                if (m_RootBuildingStarted && collider.gameObject.tag == "Earth")
                 {
                     if (!m_ActionsTracker.HasFreeActions())
                     {
                         return;
                     }
 
-                    if (m_LineTracker.CheckLineIntersect(m_SavedClick, mousePosition))
+                    if (m_LineTracker.CheckLineIntersect(m_RootBuildingStartPosition, mousePosition))
                     {
                         //do some warning?
-                        StopClick();
+                        StopRootBuilding();
                         print("Line intersect fail...");
                         return;
                     }
@@ -65,10 +62,10 @@ public class ClickCatcher : MonoBehaviour
                     //SpawnedRoot.transform.position.Set(pos.x, pos.y, m_LatestLayer++);
 
                     SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
-                    shapeController.spline.SetPosition(0, m_SavedClick);
+                    shapeController.spline.SetPosition(0, m_RootBuildingStartPosition);
 
                     //we can't spawn two points at the same place, so here's that
-                    shapeController.spline.SetPosition(1, Vector3.Lerp(m_SavedClick, mousePosition, 0.2f));
+                    shapeController.spline.SetPosition(1, Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f));
 
                     RootGrower grower = SpawnedRoot.GetComponent<RootGrower>();
                     grower.SetRootEndpoint(mousePosition);
@@ -76,18 +73,18 @@ public class ClickCatcher : MonoBehaviour
 
                     grower.m_EnergyManager = m_EnergyManager;
 
-                    m_LineTracker.AddNewLine(m_SavedClick, mousePosition);
+                    m_LineTracker.AddNewLine(m_RootBuildingStartPosition, mousePosition);
 
                     m_ActionsTracker.UpdateActions(-1);
 
-                    StopClick();
+                    StopRootBuilding();
                 }
 
                 if (collider.gameObject.tag == "Root")
                 {
 
-                    m_ClickActive = true;
-                    m_SavedClick = mousePosition;
+                    m_RootBuildingStarted = true;
+                    m_RootBuildingStartPosition = mousePosition;
                     //start showing how much energy would we lose?
                 }
             }
@@ -100,14 +97,14 @@ public class ClickCatcher : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            StopClick();
+            StopRootBuilding();
         }
     }
 
-    private void StopClick()
+    private void StopRootBuilding()
     {
-        m_ClickActive = false;
-        m_SavedClick = Vector3.zero;
+        m_RootBuildingStarted = false;
+        m_RootBuildingStartPosition = Vector3.zero;
     }
 
     private void EndGrow()

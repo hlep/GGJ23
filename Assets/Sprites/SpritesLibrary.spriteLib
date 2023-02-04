@@ -17,6 +17,16 @@ MonoBehaviour:
     m_Hash: 386724322
     m_CategoryList: []
     m_OverrideEntries:
+    - m_Name: Stage1
+      m_Hash: 819744750
+      m_Sprite: {fileID: 21300000, guid: 4307dcef2f8fc7a42bcec254710f0552, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 4307dcef2f8fc7a42bcec254710f0552, type: 3}
+    - m_Name: Stage2
+      m_Hash: 701832788
+      m_Sprite: {fileID: 21300000, guid: fdb8173d83e90c446acdea22892af4d5, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: fdb8173d83e90c446acdea22892af4d5, type: 3}
     - m_Name: Stage3
       m_Hash: 517091010
       m_Sprite: {fileID: 21300000, guid: 9892839dfc96d9e4ea4610884abfe892, type: 3}
@@ -32,8 +42,18 @@ MonoBehaviour:
       m_Sprite: {fileID: 21300000, guid: 88073d9e383ab71459a137d44bb32a1b, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 21300000, guid: 88073d9e383ab71459a137d44bb32a1b, type: 3}
+    - m_Name: Stage6
+      m_Hash: 783866445
+      m_Sprite: {fileID: 21300000, guid: 0e9470fab3b98e849bb013c8d093f307, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 0e9470fab3b98e849bb013c8d093f307, type: 3}
+    - m_Name: Stage7
+      m_Hash: 432007899
+      m_Sprite: {fileID: 21300000, guid: 63d19baf606383a4ca60e6a36c67f59e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 63d19baf606383a4ca60e6a36c67f59e, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 7
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638111456871585963
+  m_ModificationHash: 638111496696420434
   m_Version: 1
