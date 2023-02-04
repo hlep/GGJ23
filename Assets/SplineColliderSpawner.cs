@@ -12,6 +12,9 @@ public class SplineColliderSpawner : MonoBehaviour
     [SerializeField]
     float radius;
 
+    [SerializeField]
+    bool bFirstRoot = false;
+
     CircleCollider2D secondCollider;
 
     // Start is called before the first frame update
@@ -20,19 +23,22 @@ public class SplineColliderSpawner : MonoBehaviour
         Vector3 firstPoint = controller.spline.GetPosition(0);
         Vector3 secondPoint = controller.spline.GetPosition(1);
 
-        CircleCollider2D firstCollider = gameObject.AddComponent<CircleCollider2D>();
+        //CircleCollider2D firstCollider = gameObject.AddComponent<CircleCollider2D>();
 
-        firstCollider.radius = radius;
-        firstCollider.offset = firstPoint;
+        //firstCollider.radius = radius;
+        //firstCollider.offset = firstPoint;
 
         secondCollider = gameObject.AddComponent<CircleCollider2D>();
 
-        secondCollider.includeLayers = LayerMask.GetMask("Root");
+        //secondCollider.includeLayers = LayerMask.GetMask("Root");
 
         secondCollider.radius = radius;
         secondCollider.offset = secondPoint;
 
-        secondCollider.enabled = false;
+        if (!bFirstRoot)
+        {
+            secondCollider.enabled = false;
+        }
     }
 
     // Update is called once per frame

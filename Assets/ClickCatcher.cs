@@ -34,9 +34,10 @@ public class ClickCatcher : MonoBehaviour
             mousePosition.z = 0.0f;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            var collider = Physics2D.OverlapPoint(mousePosition);
+            var collider = Physics2D.OverlapPoint(mousePosition, 1 <<
+            LayerMask.NameToLayer(!m_RootBuildingStarted ? "Root" : "Earth"));
 
-          
+
             if (collider)
             {
                 if (m_RootBuildingStarted && collider.gameObject.tag == "Earth")

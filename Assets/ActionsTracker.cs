@@ -40,9 +40,9 @@ public class ActionsTracker : MonoBehaviour
     public void UpdateActions(int ActionChange)
     {
         print(m_CurrentActions);
-        //if (ActionChange > 0) { ActionIcons[m_CurrentActions].sprite = ActiveActionSprite; }
-        //else if (ActionChange < 0) { ActionIcons[m_CurrentActions - 1].sprite = EmptyActionSprite; }
-
+        if (ActionChange > 0) { ActionIcons[m_CurrentActions].sprite = ActiveActionSprite; }
+        else if (ActionChange < 0) { ActionIcons[m_CurrentActions - 1].sprite = EmptyActionSprite; }
+/*
         switch (m_CurrentActions)
         {
             case 0:
@@ -55,7 +55,7 @@ public class ActionsTracker : MonoBehaviour
                 Sprite3.sprite = ActionChange > 0 ? ActiveActionSprite : EmptyActionSprite;
                 break;
 
-        }
+        }*/
 
         m_CurrentActions += ActionChange;
         // print(m_CurrentActions);
