@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 617457900901708637}
   - component: {fileID: 617457900901708608}
   - component: {fileID: 617457900901708636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RootPrefab
   m_TagString: Root
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1971053207 &617457900901708637
 SpriteShapeRenderer:
@@ -90,8 +90,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: -0.6388944, y: 1.3443358, z: 0}
-    m_Extent: {x: 0.3541038, y: 0.944371, z: 0}
+    m_Center: {x: -0.72905076, y: 1.3632089, z: 0}
+    m_Extent: {x: 0.12936836, y: 0.92635065, z: 0}
   m_SpriteSortPoint: 0
 --- !u!68 &617457900901708608
 EdgeCollider2D:
@@ -128,11 +128,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0.3
   m_Points:
-  - {x: -0.6614955, y: 0.48398408}
-  - {x: -0.5416364, y: 0.9162052}
-  - {x: -0.5597705, y: 1.2613188}
-  - {x: -0.7140726, y: 1.8474511}
-  - {x: -0.7425053, y: 2.2868278}
+  - {x: -0.71155304, y: 0.43969023}
+  - {x: -0.742704, y: 1.4827551}
+  - {x: -0.72540027, y: 2.287057}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -152,19 +150,19 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 1
     m_ControlPoints:
-    - position: {x: -0.5897739, y: 0.72350216, z: 0}
-      leftTangent: {x: -0.45504093, y: -1.2723465, z: 0}
-      rightTangent: {x: 0.18082246, y: 0.5056007, z: 0}
+    - position: {x: -0.7269169, y: 0.6892164, z: 0}
+      leftTangent: {x: -0.025800824, y: -1.3510227, z: 0}
+      rightTangent: {x: 0.009393692, y: 0.49188662, z: 0}
       mode: 1
-      height: 1
+      height: 0.5
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
     - position: {x: -0.7309066, y: 2.037117, z: 0}
-      leftTangent: {x: 0.0037419796, y: -0.496871, z: 0}
-      rightTangent: {x: -0.0081835985, y: 1.0866556, z: 0}
+      leftTangent: {x: -0.009972215, y: -0.50372815, z: 0}
+      rightTangent: {x: 0.021508753, y: 1.086473, z: 0}
       mode: 1
-      height: 1
+      height: 0.5
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
@@ -185,8 +183,6 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -0.6614955, y: 0.48398408}
-  - {x: -0.5416364, y: 0.9162052}
-  - {x: -0.5597705, y: 1.2613188}
-  - {x: -0.7140726, y: 1.8474511}
-  - {x: -0.7425053, y: 2.2868278}
+  - {x: -0.71155304, y: 0.43969023}
+  - {x: -0.742704, y: 1.4827551}
+  - {x: -0.72540027, y: 2.287057}

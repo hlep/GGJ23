@@ -22,7 +22,11 @@ public class ClickCatcher : MonoBehaviour
         {
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = m_Camera.ScreenPointToRay(mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10);
+            ContactFilter2D rootFilter = new ContactFilter2D();
+            rootFilter.layerMask = LayerMask.GetMask("Root");
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            RaycastHit2D[] secondhit = new RaycastHit2D[20];
+            Physics2D.Raycast(ray.origin, ray.direction, rootFilter, secondhit);
             if (hit)
             {
                 // Use the hit variable to determine what was clicked on.
@@ -45,6 +49,7 @@ public class ClickCatcher : MonoBehaviour
 
                         EdgeCollider2D collider = SpawnedRoot.GetComponent<EdgeCollider2D>();
                         collider.layerOverridePriority = m_LatestLayer++;
+                        
 
 
                         m_ClickActive = false;
