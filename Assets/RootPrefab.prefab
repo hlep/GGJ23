@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 617457900901708636}
   - component: {fileID: 4324909162399015165}
   - component: {fileID: 217387987400348313}
-  m_Layer: 6
+  - component: {fileID: 8127827025840269549}
+  m_Layer: 10
   m_Name: RootPrefab
   m_TagString: Root
   m_Icon: {fileID: 0}
@@ -172,4 +173,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 617457900901708636}
-  MaxGrowSpeed: 1
+  colliderSpawner: {fileID: 4324909162399015165}
+  MaxGrowSpeed: 0.3
+--- !u!68 &8127827025840269549
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617457900901708638}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.2
+  m_Points:
+  - {x: -0.7304494, y: 0.43924022}
+  - {x: -0.7306566, y: 2.0371132}
+  - {x: -0.72668594, y: 2.2870808}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
