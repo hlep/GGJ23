@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 77248726}
   - component: {fileID: 77248730}
   m_Layer: 11
-  m_Name: Closed Sprite Shape
+  m_Name: Earth Island
   m_TagString: Earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
