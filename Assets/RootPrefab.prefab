@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 617457900901708637}
   - component: {fileID: 617457900901708636}
   - component: {fileID: 4324909162399015165}
+  - component: {fileID: 217387987400348313}
   m_Layer: 6
   m_Name: RootPrefab
   m_TagString: Root
@@ -158,3 +159,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 617457900901708636}
   radius: 0.3
+--- !u!114 &217387987400348313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617457900901708638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7c795e27c0c7946906f7da9908a64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 617457900901708636}
+  MaxGrowSpeed: 1

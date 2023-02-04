@@ -45,8 +45,11 @@ public class ClickCatcher : MonoBehaviour
 
                         SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
                         shapeController.spline.SetPosition(0, m_SavedClick);
-                        shapeController.spline.SetPosition(1, ray.origin);
-                        
+                        shapeController.spline.SetPosition(1, Vector3.Lerp(m_SavedClick, ray.origin, 0.2f));
+
+                        RootGrower grower = SpawnedRoot.GetComponent<RootGrower>();
+                        grower.SetRootEndpoint(ray.origin);
+
                         m_ClickActive = false;
                         m_SavedClick = Vector3.zero;
                     }
