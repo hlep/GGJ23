@@ -58,7 +58,7 @@ public class ActionsTracker : MonoBehaviour
         }
 
         m_CurrentActions += ActionChange;
-        print(m_CurrentActions);
+        // print(m_CurrentActions);
     }
 
     public bool HasFreeActions() { return m_CurrentActions > 0; }

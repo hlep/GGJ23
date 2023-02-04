@@ -58,12 +58,8 @@ public class ClickCatcher : MonoBehaviour
 
                     GameObject SpawnedRoot = Instantiate(rootPrefab, Vector3.zero, Quaternion.identity);
 
-                    //Vector3 pos = SpawnedRoot.transform.position;
-                    //SpawnedRoot.transform.position.Set(pos.x, pos.y, m_LatestLayer++);
-
                     SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
                     shapeController.spline.SetPosition(0, m_RootBuildingStartPosition);
-
                     //we can't spawn two points at the same place, so here's that
                     shapeController.spline.SetPosition(1, Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f));
 
@@ -82,7 +78,7 @@ public class ClickCatcher : MonoBehaviour
 
                 if (collider.gameObject.tag == "Root")
                 {
-
+                    Debug.Log("Start root building");
                     m_RootBuildingStarted = true;
                     m_RootBuildingStartPosition = mousePosition;
                     //start showing how much energy would we lose?
@@ -90,8 +86,11 @@ public class ClickCatcher : MonoBehaviour
             }
             else
             {
-                //StopClick();
-                //TODO: remove?
+                if (m_RootBuildingStarted)
+                {
+                    StopRootBuilding();
+                    Debug.Log("Stop root building - clicked outside earth");
+                }
             }
         }
 
