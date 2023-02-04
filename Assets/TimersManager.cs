@@ -7,6 +7,20 @@ public class TimersManager : MonoBehaviour
     [SerializeField] public float[] TreeStagesDurations;
     private IEnumerator TreeStageCoroutine = null;
 
+
+    void StartPreparation()
+    {
+
+    }
+
+    private IEnumerator StartGame(float timeBeforStart)
+    {
+        StartPreparation();
+        yield return new WaitForSeconds(timeBeforStart);
+        print("Started");
+    }
+
+
     private IEnumerator StartGameAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
