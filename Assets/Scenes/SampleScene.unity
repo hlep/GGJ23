@@ -1571,6 +1571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InitialRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 4324909162399015165, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
+      propertyPath: radius
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

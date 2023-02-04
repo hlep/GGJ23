@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 617457900901708610}
   - component: {fileID: 617457900901708637}
-  - component: {fileID: 617457900901708608}
   - component: {fileID: 617457900901708636}
+  - component: {fileID: 4324909162399015165}
   m_Layer: 6
   m_Name: RootPrefab
   m_TagString: Root
@@ -93,48 +93,6 @@ SpriteShapeRenderer:
     m_Center: {x: -0.72905076, y: 1.3632089, z: 0}
     m_Extent: {x: 0.12936836, y: 0.92635065, z: 0}
   m_SpriteSortPoint: 0
---- !u!68 &617457900901708608
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617457900901708638}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.3
-  m_Points:
-  - {x: -0.71155304, y: 0.43969023}
-  - {x: -0.742704, y: 1.4827551}
-  - {x: -0.72540027, y: 2.287057}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &617457900901708636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +141,20 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -0.71155304, y: 0.43969023}
-  - {x: -0.742704, y: 1.4827551}
-  - {x: -0.72540027, y: 2.287057}
+  - {x: -0.7304494, y: 0.43924022}
+  - {x: -0.7306566, y: 2.0371132}
+  - {x: -0.72668594, y: 2.2870808}
+--- !u!114 &4324909162399015165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617457900901708638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3922ad5cb336654438376be048bc0b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 617457900901708636}
+  radius: 0.3

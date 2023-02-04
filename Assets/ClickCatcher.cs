@@ -46,12 +46,7 @@ public class ClickCatcher : MonoBehaviour
                         SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
                         shapeController.spline.SetPosition(0, m_SavedClick);
                         shapeController.spline.SetPosition(1, ray.origin);
-
-                        EdgeCollider2D collider = SpawnedRoot.GetComponent<EdgeCollider2D>();
-                        collider.layerOverridePriority = m_LatestLayer++;
                         
-
-
                         m_ClickActive = false;
                         m_SavedClick = Vector3.zero;
                     }
@@ -71,6 +66,13 @@ public class ClickCatcher : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                m_ClickActive = false;
+                m_SavedClick = Vector3.zero;
+            }
+
+            
         }
 
         if (Input.GetMouseButtonDown(1))
