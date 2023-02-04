@@ -47,7 +47,9 @@ public class ClickCatcher : MonoBehaviour
                         return;
                     }
 
-                    if (m_LineTracker.CheckLineIntersect(m_RootBuildingStartPosition, mousePosition))
+                    Vector3 startPosWithOffset = Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f);
+
+                    if (m_LineTracker.CheckLineIntersect(startPosWithOffset, mousePosition))
                     {
                         //do some warning?
                         StopRootBuilding();

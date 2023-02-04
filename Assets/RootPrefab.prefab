@@ -77,7 +77,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.62985045, g: 0.9872339, b: 0.990566, a: 1}
+  m_Color: {r: 0.9607843, g: 0.59607846, b: 0.94509804, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -91,8 +91,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: -0.72905076, y: 1.3632089, z: 0}
-    m_Extent: {x: 0.12936836, y: 0.92635065, z: 0}
+    m_Center: {x: -0.7298652, y: 1.3633044, z: 0}
+    m_Extent: {x: 0.12790486, y: 0.9262552, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &617457900901708636
 MonoBehaviour:
@@ -113,7 +113,7 @@ MonoBehaviour:
       leftTangent: {x: -0.025800824, y: -1.3510227, z: 0}
       rightTangent: {x: 0.009393692, y: 0.49188662, z: 0}
       mode: 1
-      height: 0.5
+      height: 0.46
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 617457900901708636}
   radius: 0.3
+  bFirstRoot: 0
 --- !u!114 &217387987400348313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,4 +174,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 617457900901708636}
   colliderSpawner: {fileID: 4324909162399015165}
-  MaxGrowSpeed: 0.3
+  MaxGrowSpeed: 0.09
+  m_EnergyManager: {fileID: 0}
