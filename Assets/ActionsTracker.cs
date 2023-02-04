@@ -40,8 +40,8 @@ public class ActionsTracker : MonoBehaviour
     public void UpdateActions(int ActionChange)
     {
         print(m_CurrentActions);
-        if (ActionChange > 0) { ActionIcons[m_CurrentActions].sprite = ActiveActionSprite; }
-        else if (ActionChange < 0) { ActionIcons[m_CurrentActions - 1].sprite = EmptyActionSprite; }
+        //if (ActionChange > 0) { ActionIcons[m_CurrentActions].sprite = ActiveActionSprite; }
+        //else if (ActionChange < 0) { ActionIcons[m_CurrentActions - 1].sprite = EmptyActionSprite; }
 
         switch (m_CurrentActions)
         {

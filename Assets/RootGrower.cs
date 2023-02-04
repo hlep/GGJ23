@@ -14,9 +14,10 @@ public class RootGrower : MonoBehaviour
 
     [SerializeField]
     SplineColliderSpawner colliderSpawner;
-
     [SerializeField]
     float MaxGrowSpeed = 0.09f;
+
+    float EnergyConsumptionPerDistance = 10;
 
     Vector3 m_rootEnd = Vector3.zero;
 
@@ -25,6 +26,8 @@ public class RootGrower : MonoBehaviour
     float Progress = 0.0f;
 
     float MovementTime = 0.0f;
+
+    public EnergyManager m_EnergyManager;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +48,11 @@ public class RootGrower : MonoBehaviour
 
             Vector3 NewPos = Vector3.Lerp(controller.spline.GetPosition(1), m_rootEnd, Mathf.SmoothStep(0f, 1f, Progress));
 
-            controller.spline.SetPosition(1, NewPos);
+            float EnergyConsumed = EnergyConsumptionPerDistance * Vector3.Distance(controller.spline.GetPosition(1), NewPos);
+
+            m_EnergyManager.ConsumeEnergy(EnergyConsumed);
+
+            controller.spline.SetPosition(1, NewPos); 
         } 
         else if(!m_finishedGrowing && m_rootEnd != Vector3.zero)
         {

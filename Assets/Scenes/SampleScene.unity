@@ -691,6 +691,7 @@ MonoBehaviour:
   rootPrefab: {fileID: 617457900901708638, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
   m_LineTracker: {fileID: 1766320901}
   m_ActionsTracker: {fileID: 1749468269}
+  m_EnergyManager: {fileID: 1195512203}
 --- !u!4 &663308783
 Transform:
   m_ObjectHideFlags: 0
@@ -790,6 +791,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1195512202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195512204}
+  - component: {fileID: 1195512203}
+  m_Layer: 0
+  m_Name: EnergyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1195512203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195512202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71725dc407ecced4294a42acb7aa29b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1195512204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195512202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0028683, y: -0.95995057, z: -0.05422258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1293910463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -893,6 +938,9 @@ MonoBehaviour:
   - {fileID: 49952144}
   - {fileID: 2141665254}
   - {fileID: 898968388}
+  Sprite1: {fileID: 49952144}
+  Sprite2: {fileID: 2141665254}
+  Sprite3: {fileID: 898968388}
   ActiveActionSprite: {fileID: 21300000, guid: ccf8ae63d8f636a4db1cf149d366a815, type: 3}
   EmptyActionSprite: {fileID: 21300000, guid: b403b6afd2e3ef44b835de67b3b02622, type: 3}
 --- !u!4 &1749468270

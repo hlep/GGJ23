@@ -17,6 +17,9 @@ public class ClickCatcher : MonoBehaviour
     [SerializeField]
     ActionsTracker m_ActionsTracker;
 
+    [SerializeField]
+    EnergyManager m_EnergyManager;
+
 
     void Awake()
     {
@@ -28,68 +31,62 @@ public class ClickCatcher : MonoBehaviour
         {
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = m_Camera.ScreenPointToRay(mousePosition);
-            ContactFilter2D rootFilter = new ContactFilter2D();
-            rootFilter.layerMask = LayerMask.GetMask("Root");
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit)
             {
-                if(hit.collider.gameObject.tag == "Earth")
+                if (m_ClickActive && hit.collider.gameObject.tag == "Earth")
                 {
-                    if (m_ClickActive) //click can be active only when we build roots?
+                    if (!m_ActionsTracker.HasFreeActions())
                     {
-                        
-                        if(m_LineTracker.CheckLineIntersect(m_SavedClick, ray.origin))
-                        {
-                            //do some warning?
-                            StopClick();
-                            return;
-                        }
+                        return;
+                    }
 
-                        //finish building root
-
-                        GameObject SpawnedRoot = Instantiate(rootPrefab, Vector3.zero, Quaternion.identity);
-
-                        Vector3 pos = SpawnedRoot.transform.position;
-                        SpawnedRoot.transform.position.Set(pos.x, pos.y, m_LatestLayer++);
-
-                        SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
-                        shapeController.spline.SetPosition(0, m_SavedClick);
-
-                        //we can't spawn two points at the same place, so here's that
-                        shapeController.spline.SetPosition(1, Vector3.Lerp(m_SavedClick, ray.origin, 0.2f));
-
-                        RootGrower grower = SpawnedRoot.GetComponent<RootGrower>();
-                        grower.SetRootEndpoint(ray.origin);
-                        grower.growEndDelegate = EndGrow;
-
-                        m_LineTracker.AddNewLine(m_SavedClick, ray.origin);
-
-                        m_ActionsTracker.UpdateActions(-1);
-
+                    if (m_LineTracker.CheckLineIntersect(m_SavedClick, ray.origin))
+                    {
+                        //do some warning?
                         StopClick();
+                        return;
                     }
-                    else
-                    {
-                        m_SavedClick = mousePosition;
-                    }
+
+                    //finish building root
+
+                    GameObject SpawnedRoot = Instantiate(rootPrefab, Vector3.zero, Quaternion.identity);
+
+                    Vector3 pos = SpawnedRoot.transform.position;
+                    SpawnedRoot.transform.position.Set(pos.x, pos.y, m_LatestLayer++);
+
+                    SpriteShapeController shapeController = SpawnedRoot.GetComponent<SpriteShapeController>();
+                    shapeController.spline.SetPosition(0, m_SavedClick);
+
+                    //we can't spawn two points at the same place, so here's that
+                    shapeController.spline.SetPosition(1, Vector3.Lerp(m_SavedClick, ray.origin, 0.2f));
+
+                    RootGrower grower = SpawnedRoot.GetComponent<RootGrower>();
+                    grower.SetRootEndpoint(ray.origin);
+                    grower.growEndDelegate = EndGrow;
+
+                    grower.m_EnergyManager = m_EnergyManager;
+
+                    m_LineTracker.AddNewLine(m_SavedClick, ray.origin);
+
+                    m_ActionsTracker.UpdateActions(-1);
+
+                    StopClick();
                 }
 
                 if (hit.collider.gameObject.tag == "Root")
                 {
-                    if (!m_ClickActive)
-                    {
-                        m_ClickActive = true;
-                        m_SavedClick = ray.origin;
-                        //start showing how much energy would we lose?
-                    }
+
+                    m_ClickActive = true;
+                    m_SavedClick = ray.origin;
+                    //start showing how much energy would we lose?
                 }
             }
             else
             {
-                StopClick();
+                //StopClick();
+                //TODO: remove?
             }
-
-            
         }
 
         if (Input.GetMouseButtonDown(1))
