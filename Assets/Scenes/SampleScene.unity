@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &77248726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf70aadc8ea0ecf47aae6f9e74a4389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EarthShape: {fileID: 0}
+  m_EarthShape: {fileID: 77248727}
+  startLocation: {x: 0, y: -2, z: 0}
+  cellSize: {x: 1, y: 1}
 --- !u!114 &77248727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,57 +172,25 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -3.374951, y: -5.02583, z: 0}
-      leftTangent: {x: 0.17974281, y: -0.0001616478, z: 0}
-      rightTangent: {x: -0.53597355, y: 0.0004825592, z: 0}
+    - position: {x: -1.2911592, y: -0.8903342, z: 0}
+      leftTangent: {x: 0.17974186, y: -0.0001603365, z: 0}
+      rightTangent: {x: -0.5359731, y: 0.00048315525, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -3.1993985, y: 0.82622313, z: 0}
-      leftTangent: {x: -1.0023327, y: 0.0010559559, z: 0}
-      rightTangent: {x: 1.0023336, y: -0.0010559559, z: 0}
+    - position: {x: 0.11251277, y: 0.94040334, z: 0}
+      leftTangent: {x: -1.0005894, y: -0.0016918182, z: 0}
+      rightTangent: {x: 1.0005851, y: 0.0016908646, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 16.94106, y: 0.80986893, z: 0}
-      leftTangent: {x: -1.0005894, y: -0.0016920567, z: 0}
-      rightTangent: {x: 1.0005913, y: 0.0016920567, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 17.144205, y: -5.034007, z: 0}
-      leftTangent: {x: 0.5439091, y: 0.00042247772, z: 0}
-      rightTangent: {x: -0.23021698, y: -0.00017881393, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 6.6744413, y: -4.959914, z: 0}
-      leftTangent: {x: 4.914424, y: -0.077600956, z: 0}
-      rightTangent: {x: -1.6851225, y: 0.026341915, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 2.1569333, y: -4.955504, z: 0}
-      leftTangent: {x: 1.4618556, y: -0.10845137, z: 0}
-      rightTangent: {x: -0.9715004, y: 0.07307291, z: 0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.30322027, y: -4.085428, z: 0}
-      leftTangent: {x: 0.8309345, y: -0.00035381317, z: 0}
-      rightTangent: {x: -3.2264748, y: 0.0013437271, z: 0}
+    - position: {x: 1.0907507, y: -1.0208001, z: 0}
+      leftTangent: {x: 0.54390955, y: 0.00042164326, z: 0}
+      rightTangent: {x: -0.23021603, y: -0.00017893314, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
@@ -299,8 +269,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 6.876014, y: -2.1039019, z: 0}
-    m_Extent: {x: 10.932927, y: 3.1796656, z: 0}
+    m_Center: {x: -0.009236932, y: -0.03408134, z: 0}
+    m_Extent: {x: 1.5604489, y: 1.2242781, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &77248729
 Transform:
@@ -310,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77248725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.85, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -624,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1486418350
 MonoBehaviour:
   m_ObjectHideFlags: 0
