@@ -1,7 +1,11 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.U2D;
 
 public class SpriteClicker : MonoBehaviour
 {
@@ -21,8 +25,7 @@ public class SpriteClicker : MonoBehaviour
         {
             print("hit!");
             print(hit.collider.gameObject.name);
-            //print(hit.collider);
-            // Use the hit variable to determine what was clicked on.
+            SpriteShapeController shapeC = hit.collider.gameObject.GetComponent<SpriteShapeController>();
         }
         else
         {
@@ -34,5 +37,10 @@ public class SpriteClicker : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void FindClosestPoint()
+    {
+
     }
 }

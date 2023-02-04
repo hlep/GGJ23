@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EdgeCollider2D
+  m_TargetType:
+    m_NativeTypeID: 68
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Density
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Material
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_IncludeLayers.m_Bits
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExcludeLayers.m_Bits
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LayerOverridePriority
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ForceSendLayers.m_Bits
+    value: 4294967295
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ForceReceiveLayers.m_Bits
+    value: 4294967295
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ContactCaptureLayers.m_Bits
+    value: 4294967295
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_CallbackLayers.m_Bits
+    value: 4294967295
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_IsTrigger
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_UsedByEffector
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_UsedByComposite
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Offset.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Offset.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EdgeRadius
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.size
+    value: 11
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[0].x
+    value: -2.0186074
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[0].y
+    value: -0.107171856
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[1].x
+    value: -1.7164259
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[1].y
+    value: 0.24759668
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[2].x
+    value: -1.6357247
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[2].y
+    value: 0.40698138
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[3].x
+    value: -1.6039251
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[3].y
+    value: 0.5602596
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[4].x
+    value: -1.6105424
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[4].y
+    value: 0.7063791
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[5].x
+    value: -1.755889
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[5].y
+    value: 1.0914223
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[6].x
+    value: -1.8524119
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[6].y
+    value: 1.293406
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[7].x
+    value: -1.8509035
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[7].y
+    value: 1.4418403
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[8].x
+    value: -1.6676533
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[8].y
+    value: 1.5290725
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[9].x
+    value: -1.4814705
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[9].y
+    value: 1.5471965
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[10].x
+    value: -0.968296
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Points.Array.data[10].y
+    value: 1.5466187
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_AdjacentStartPoint.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_AdjacentStartPoint.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_AdjacentEndPoint.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_AdjacentEndPoint.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_UseAdjacentStartPoint
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_UseAdjacentEndPoint
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
