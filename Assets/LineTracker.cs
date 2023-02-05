@@ -2,14 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class LineTracker : MonoBehaviour
 {
+    [SerializeField]
+    TreeController treeController;
+
     // Start is called before the first frame update
     List<KeyValuePair<Vector3, Vector3>> startEndPair = new List<KeyValuePair<Vector3, Vector3>>();
     public List<KeyValuePair<GameObject, Vector3>> CirlePairs = new List<KeyValuePair<GameObject, Vector3>>();
     const float MineralRadius = 0.22f;
+    const float DiscoveryRadius = 0.5f;
+
+    const float MaxDepth = 3.61f;
+    const float MaxDepthForce = 10;
 
     void Start()
     {
@@ -42,12 +51,22 @@ public class LineTracker : MonoBehaviour
     {
         startEndPair.Add(new KeyValuePair<Vector3, Vector3>(startPoint, endPoint));
 
+        float Depth = Mathf.Max(endPoint.y - startPoint.y, 0);
+
+        treeController.compensatedWeight += Depth / MaxDepth * MaxDepthForce;
+
         foreach (var CirclePair in CirlePairs)
         {
             if (CheckMineralIntersection(startPoint, endPoint, CirclePair.Value, MineralRadius))
             {
                 var Crystal = CirclePair.Key.GetComponent<CrystalLogic>();
                 Crystal.IsTouched = true;
+            }
+
+            if (CheckPointInsideRadius(endPoint, CirclePair.Value, DiscoveryRadius))
+            {
+                var Crystal = CirclePair.Key.GetComponent<CrystalLogic>();
+                Crystal.SetDiscovered();
             }
         }
     }
@@ -160,10 +179,19 @@ public class LineTracker : MonoBehaviour
             double root1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
             double root2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
 
+            //it's the line of intersection
+            new Vector3((float)root1, (slope * (float)root1 + intercept), 0);
+
             return true;
         }
 
         return false;
+    }
+
+    bool CheckPointInsideRadius(Vector3 Point, Vector3 mineralLoc, float Radius)
+    {
+        bool isInside = (Math.Pow((Point.x - mineralLoc.x), 2) + Math.Pow((Point.y - mineralLoc.y), 2)) <= Math.Pow(Radius, 2);
+        return isInside;
     }
 
 }

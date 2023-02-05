@@ -6,8 +6,8 @@ public class EnergyManager : MonoBehaviour
 {
     float MaxEnergy = 100;
     public float CurrentEnergy = 30;
-    float EnergyRegenPerSec = 3;
-    float EnergyConsumptionPerDistance = 30;
+    float EnergyRegenPerSec = 4;
+    float EnergyConsumptionPerDistance = 20;
 
     [SerializeField]
     RectTransform CurrentEnergyBarTransf;

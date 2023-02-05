@@ -14,14 +14,18 @@ public class CrystalLogic : MonoBehaviour
     public float EnergyStore = 100;
     public float EnergyConsumptionPerSecond = 10;
     public bool IsTouched = false;
+    public bool IsDiscovered = false;
     public bool IsConsumingEnergy = false;
 
     GameObject CreatedSprite = null;
 
+    [SerializeField]
+    SpriteRenderer Sprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Sprite.enabled  = false;
     }
 
     // Update is called once per frame
@@ -60,5 +64,11 @@ public class CrystalLogic : MonoBehaviour
     public bool CanStartConsumingEnergy()
     {
         return EnergyStore > 0 && m_ActionsTracker.HasFreeActions() && IsTouched;
+    }
+
+    public void SetDiscovered()
+    {
+        IsDiscovered = true;
+        Sprite.enabled = true;
     }
 }

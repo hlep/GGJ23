@@ -154,4 +154,6 @@ MonoBehaviour:
   EnergyStore: 100
   EnergyConsumptionPerSecond: 10
   IsTouched: 0
+  IsDiscovered: 0
   IsConsumingEnergy: 0
+  Sprite: {fileID: 7989895092185465478}
