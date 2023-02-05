@@ -12,14 +12,14 @@ public class EnergyManager : MonoBehaviour
     [SerializeField]
     RectTransform EnergyBarTransf;
 
-    RectTransform MaxEnergyBarTransf;
+    float MaxEnergyBarY;
 
     //-1000 is min transform
 
     // Start is called before the first frame update
     void Start()
     {
-        MaxEnergyBarTransf = EnergyBarTransf;
+        MaxEnergyBarY = EnergyBarTransf.anchoredPosition.y;
     }
 
     // Update is called once per frame
@@ -28,9 +28,9 @@ public class EnergyManager : MonoBehaviour
         CurrentEnergy = Mathf.Min(MaxEnergy, CurrentEnergy + EnergyRegenPerSec * Time.deltaTime);
         // print(CurrentEnergy);
 
-        float EnergyPercent = Mathf.Clamp(MaxEnergy/ CurrentEnergy, 0, 1);
+        float EnergyPercent = Mathf.Clamp(CurrentEnergy/MaxEnergy, 0, 1);
 
-        float yPos = Mathf.Lerp(-1000, MaxEnergyBarTransf.anchoredPosition.y, EnergyPercent);
+        float yPos = Mathf.Lerp(-1000, MaxEnergyBarY, EnergyPercent);
 
         EnergyBarTransf.anchoredPosition = new Vector2(EnergyBarTransf.anchoredPosition.x, yPos);
     }
