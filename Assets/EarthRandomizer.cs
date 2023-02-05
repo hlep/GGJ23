@@ -37,6 +37,11 @@ public class EarthRandomizer : MonoBehaviour
     [SerializeField] private Vector2 cellSize;
     [SerializeField] private ShapeTangentMode shapeTangentMode = ShapeTangentMode.Continuous;
 
+    private bool bIsIslandGenerated = false;
+
+    private Vector3[] leftPoints;
+    private Vector3[] rightPoints;
+
     [SerializeField] private RowSetup[] GridSetup = {
         new RowSetup(2, 3, 3, 2),
         new RowSetup(1, 6, 6, 1),
@@ -47,7 +52,11 @@ public class EarthRandomizer : MonoBehaviour
         new RowSetup(2, 5, 5, 2),
     };
 
-    void DrawMaximizedIsland(Color color, float time, bool bWithHorizontals)
+    public int GetRowsCount() { return GridSetup.Length;  }
+    public Vector3[] GetIslandLeftPoints() { return leftPoints; }
+    public Vector3[] GetIslandRightPoints() { return rightPoints; }
+
+    void Debug_DrawMaximizedIsland(Color color, float time, bool bWithHorizontals)
     {
         for (int i = 0; i < GridSetup.Length; i++)
         {
@@ -83,7 +92,7 @@ public class EarthRandomizer : MonoBehaviour
         }
     }
 
-    void DrawMinimizedIsland(Color color, float time)
+    void Debug_DrawMinimizedIsland(Color color, float time)
     {
         for (int i = 0; i < GridSetup.Length; i++)
         {
@@ -115,7 +124,7 @@ public class EarthRandomizer : MonoBehaviour
         }
     }
 
-    void DrawVerticalLines(Color color, float time)
+    void Debug_DrawVerticalLines(Color color, float time)
     {
         int maxCells = 0;
         for (int i = 0; i < GridSetup.Length; i++)
@@ -158,8 +167,8 @@ public class EarthRandomizer : MonoBehaviour
 
     void Generator_GenerateIsland()
     {
-        Vector3[] leftPositions = new Vector3[GridSetup.Length];
-        Vector3[] rightPositions = new Vector3[GridSetup.Length];
+        leftPoints = new Vector3[GridSetup.Length];
+        rightPoints = new Vector3[GridSetup.Length];
         int[] leftCellsCountByRow = new int[GridSetup.Length];
         int[] rightCellsCountByRow = new int[GridSetup.Length];
 
@@ -175,11 +184,11 @@ public class EarthRandomizer : MonoBehaviour
             leftCellsCountByRow[i] = UnityEngine.Random.Range(leftMinCellsInclusive, leftMaxCellsExclusive);
             rightCellsCountByRow[i] = UnityEngine.Random.Range(rightMinCellsInclusive, rightMaxCellsExclusive);
 
-            leftPositions[i] = startLocation + new Vector3(-leftCellsCountByRow[i] * cellSize.x, i * cellSize.y);
-            rightPositions[i] = startLocation + new Vector3(rightCellsCountByRow[i] * cellSize.x, i * cellSize.y);
+            leftPoints[i] = startLocation + new Vector3(-leftCellsCountByRow[i] * cellSize.x, i * cellSize.y);
+            rightPoints[i] = startLocation + new Vector3(rightCellsCountByRow[i] * cellSize.x, i * cellSize.y);
         }
 
-        var result = leftPositions.Prepend(startLocation).Concat(rightPositions.Reverse()).ToArray();
+        var result = leftPoints.Prepend(startLocation).Concat(rightPoints.Reverse()).ToArray();
 
         try
         {
@@ -204,10 +213,11 @@ public class EarthRandomizer : MonoBehaviour
         }
 
         m_EarthShape.RefreshSpriteShape();
+        bIsIslandGenerated = true;
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         Generator_GenerateIsland();
     }
@@ -215,8 +225,6 @@ public class EarthRandomizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*DrawMaximizedIsland(Color.red, 0, true);
-        DrawMinimizedIsland(Color.black, 0);
-        DrawVerticalLines(Color.black, 0);*/
+
     }
 }

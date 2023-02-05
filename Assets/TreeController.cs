@@ -10,6 +10,7 @@ struct TreeStageSetup
     public string spriteLabel;
     public string[] brokenSpriteLabels;
     public float duration;
+    public float treeWeight;
 }
 
 public class TreeController : MonoBehaviour
@@ -17,6 +18,10 @@ public class TreeController : MonoBehaviour
     [SerializeField] private SpriteResolver spriteResolver;
     [SerializeField] private SpriteLibrary spriteLibrary;
     [SerializeField] private TreeStageSetup[] stagesSetup;
+
+    private bool bTreeStarted = false;
+    private int currentTreeStage;
+    private float currentWeight;
 
     private Coroutine TreeStageCoroutine = null;
 
@@ -33,10 +38,13 @@ public class TreeController : MonoBehaviour
 
     private IEnumerator StartTreeStage(int stage)
     {
-        spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[stage].spriteLabel);
         print("Tree stage " + stage + " started");
 
-        yield return new WaitForSeconds(stagesSetup[stage].duration);
+        currentTreeStage = stage;
+        spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
+        currentWeight = stagesSetup[currentTreeStage].treeWeight;
+
+        yield return new WaitForSeconds(stagesSetup[currentTreeStage].duration);
 
         OnTreeStageEnded(stage);
     }
@@ -61,8 +69,11 @@ public class TreeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTree();
+        Debug.Log("Tree not started!!!");
+        // startTree();
     }
+
+    private float lastWeightUpdateTime;
 
     // Update is called once per frame
     void Update()
