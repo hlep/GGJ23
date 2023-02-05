@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MineralPrefab: {fileID: 8918564102115639044, guid: 284808519fbe9594f962722430f96d67, type: 3}
   earthRandomizer: {fileID: 77248726}
-  StartPoint: {x: 0, y: 0.5, z: 0}
+  StartPoint: {x: 0, y: -1, z: 0}
   RowDistance: 1
   MineralLayersSetup:
   - count: 3

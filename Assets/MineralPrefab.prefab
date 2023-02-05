@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8918564102115639044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.814, y: -5.5599, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6388e88f1135e624b8ba9c2b7679784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnergyCapacity: 0
+  earthRandomizer: {fileID: 0}
 --- !u!58 &5444078258664056208
 CircleCollider2D:
   m_ObjectHideFlags: 0

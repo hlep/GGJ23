@@ -37,19 +37,26 @@ public class MineralManager : MonoBehaviour
         mineralLayerStates = new MineralLayerState[earthRandomizer.GetRowsCount() - 1];
         for (int i = 0; i < earthRandomizer.GetRowsCount() - 1; i++)
         {
+            float minMineralX = (leftPoints[i].x + leftPoints[i + 1].x) / 2;
+            float maxMineralX = (rightPoints[i].x + rightPoints[i + 1].x) / 2;
+            float mineralY = StartPoint.y + i * RowDistance;
+
+            Debug.DrawLine(new Vector3(minMineralX, mineralY), new Vector3(maxMineralX, mineralY), Color.red, 20);
+
             if (i >= MineralLayersSetup.Length)
             {
                 Debug.LogWarning("No mineral setup for layer " + i);
-                break;
+                continue;
             }
 
             for (int j = 0; j < MineralLayersSetup[i].count; j++)
             {
-                float mineralX = UnityEngine.Random.Range((leftPoints[i].x + leftPoints[i + 1].x) / 2, (rightPoints[i].x + rightPoints[i + 1].x) / 2);
-                float mineralY = StartPoint.y + i * RowDistance;
+                float mineralX = UnityEngine.Random.Range(minMineralX, maxMineralX);
                 Vector3 mineralPoint = new Vector3(mineralX, mineralY);
                 Instantiate(MineralPrefab, mineralPoint, Quaternion.identity);
             }
+
+            
         }
     }
 
