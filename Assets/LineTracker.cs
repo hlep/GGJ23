@@ -8,6 +8,8 @@ public class LineTracker : MonoBehaviour
 {
     // Start is called before the first frame update
     List<KeyValuePair<Vector3, Vector3>> startEndPair = new List<KeyValuePair<Vector3, Vector3>>();
+    public List<KeyValuePair<GameObject, Vector3>> CirlePairs = new List<KeyValuePair<GameObject, Vector3>>();
+    const float MineralRadius = 0.22f;
 
     void Start()
     {
@@ -39,6 +41,15 @@ public class LineTracker : MonoBehaviour
     public void AddNewLine(Vector3 startPoint, Vector3 endPoint)
     {
         startEndPair.Add(new KeyValuePair<Vector3, Vector3>(startPoint, endPoint));
+
+        foreach (var CirclePair in CirlePairs)
+        {
+            if (CheckMineralIntersection(startPoint, endPoint, CirclePair.Value, MineralRadius))
+            {
+                var Crystal = CirclePair.Key.GetComponent<CrystalLogic>();
+                Crystal.IsTouched = true;
+            }
+        }
     }
 
     // Given three collinear Vector3s p, q, r, the function checks if
@@ -128,4 +139,31 @@ public class LineTracker : MonoBehaviour
             return new Vector3(x, y);
         }
     }
+
+    bool CheckMineralIntersection(Vector3 startPoint, Vector3 endPoint, Vector3 mineralLoc, float mineralRadius)
+    {
+        // Calculate the slope and intercept of the line
+        float slope = (endPoint.y - startPoint.y) / (endPoint.x - startPoint.x);
+        float intercept = startPoint.y - slope * startPoint.x;
+
+        // Calculate the coefficients of the quadratic equation
+        float a = 1 + slope * slope;
+        float b = 2 * (slope * intercept - mineralLoc.x - slope * mineralLoc.y);
+        float c = mineralLoc.x * mineralLoc.x + intercept * intercept - 2 * intercept * mineralLoc.y + mineralLoc.y * mineralLoc.y - mineralRadius * mineralRadius;
+
+        // Calculate the discriminant
+        float discriminant = b * b - 4 * a * c;
+
+        if (discriminant >= 0)
+        {
+            // There are two real roots
+            double root1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+            double root2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+
+            return true;
+        }
+
+        return false;
+    }
+
 }

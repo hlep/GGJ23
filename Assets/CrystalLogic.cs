@@ -59,6 +59,6 @@ public class CrystalLogic : MonoBehaviour
 
     public bool CanStartConsumingEnergy()
     {
-        return EnergyStore > 0 && m_ActionsTracker.HasFreeActions();
+        return EnergyStore > 0 && m_ActionsTracker.HasFreeActions() && IsTouched;
     }
 }
