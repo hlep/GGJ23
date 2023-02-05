@@ -20,13 +20,18 @@ public class LineTracker : MonoBehaviour
 
     }
 
-    public bool CheckLineIntersect(Vector3 startPoint, Vector3 endPoint)
+    public bool CheckLineIntersect(Vector3 startPoint, Vector3 endPoint, out Vector3 intersectionPoint)
     {
         foreach (var TwoPoints in startEndPair)
         {
             if (doIntersect(startPoint, endPoint, TwoPoints.Key, TwoPoints.Value))
+            {
+                intersectionPoint = lineLineIntersection(startPoint, endPoint, TwoPoints.Key, TwoPoints.Value);
                 return true;
+            }
         }
+
+        intersectionPoint = Vector3.zero;
 
         return false;
     }
@@ -93,5 +98,34 @@ public class LineTracker : MonoBehaviour
         if (o4 == 0 && onSegment(p2, q1, q2)) return true;
 
         return false; // Doesn't fall in any of the above cases
+    }
+
+
+    public Vector3 lineLineIntersection(Vector3 A, Vector3 B, Vector3 C, Vector3 D)
+    {
+        // Line AB represented as a1x + b1y = c1
+        float a1 = B.y - A.y;
+        float b1 = A.x - B.x;
+        float c1 = a1 * (A.x) + b1 * (A.y);
+
+        // Line CD represented as a2x + b2y = c2
+        float a2 = D.y - C.y;
+        float b2 = C.x - D.x;
+        float c2 = a2 * (C.x) + b2 * (C.y);
+
+        float determinant = a1 * b2 - a2 * b1;
+
+        if (determinant == 0)
+        {
+            // The lines are parallel. This is simplified
+            // by returning a pair of FLT_MAX
+            return Vector3.zero;
+        }
+        else
+        {
+            float x = (b2 * c1 - b1 * c2) / determinant;
+            float y = (a1 * c2 - a2 * c1) / determinant;
+            return new Vector3(x, y);
+        }
     }
 }

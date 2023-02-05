@@ -55,11 +55,13 @@ public class ClickCatcher : MonoBehaviour
 
                     Vector3 startPosWithOffset = Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f);
 
-                    if (m_LineTracker.CheckLineIntersect(startPosWithOffset, mousePosition))
+                    Vector3 lineIntersect;
+                    if (m_LineTracker.CheckLineIntersect(startPosWithOffset, mousePosition, out lineIntersect))
                     {
                         //do some warning?
                         StopRootBuilding();
                         print("Line intersect fail...");
+                        print(lineIntersect);
                         return;
                     }
 
