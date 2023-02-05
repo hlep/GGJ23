@@ -491,6 +491,8 @@ MonoBehaviour:
   - count: 1
     MaxDownOffset: 0.3
     MaxUpOffset: 0
+  m_EnergyManager: {fileID: 2103545265}
+  m_ActionsTracker: {fileID: 1749468269}
 --- !u!1 &310485924
 GameObject:
   m_ObjectHideFlags: 0

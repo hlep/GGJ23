@@ -29,6 +29,9 @@ public class MineralManager : MonoBehaviour
     [SerializeField] private float SideOffsetFromEarthBorder = 0;
     [SerializeField] MineralLayerSetup[] MineralLayersSetup;
 
+    [SerializeField] EnergyManager m_EnergyManager;
+    [SerializeField] ActionsTracker m_ActionsTracker;
+
     private MineralLayerState[] mineralLayerStates;
 
 
@@ -62,7 +65,10 @@ public class MineralManager : MonoBehaviour
                 float mineralX = UnityEngine.Random.Range(minMineralX, maxMineralX);
                 float mineralY = UnityEngine.Random.Range(minMineralY, maxMineralY);
                 Vector3 mineralPoint = new Vector3(mineralX, mineralY);
-                Instantiate(MineralPrefab, mineralPoint, Quaternion.identity);
+                GameObject spawned = Instantiate(MineralPrefab, mineralPoint, Quaternion.identity);
+                CrystalLogic logic = spawned.GetComponent<CrystalLogic>();
+                logic.m_ActionsTracker = m_ActionsTracker;
+                logic.m_EnergyManager = m_EnergyManager;
             }
         }
     }
@@ -76,6 +82,6 @@ public class MineralManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
