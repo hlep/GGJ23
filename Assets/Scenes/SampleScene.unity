@@ -663,7 +663,7 @@ MonoBehaviour:
   weightDifferenceForLose: 100
   LoseTreePosition: {x: 0, y: -5, z: 0}
   LoseTime: 2
-  winController: {fileID: 0}
+  winController: {fileID: 328696711}
   loseController: {fileID: 0}
   currentWeight: 0
   compensatedWeight: 5
