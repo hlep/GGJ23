@@ -37,7 +37,7 @@ public class TreeController : MonoBehaviour
     private int currentTreeStage = -1;
     private int currentBreakStage = -1;
     public float currentWeight = 0;
-    private float compensatedWeight = 5;
+    public float compensatedWeight = 5;
 
     private Coroutine TreeStageCoroutine = null;
 
