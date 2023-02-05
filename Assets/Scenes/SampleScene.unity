@@ -630,27 +630,36 @@ MonoBehaviour:
   - spriteLabel: Stage2
     brokenSpriteLabels: []
     duration: 2
-    treeWeight: 0
+    treeWeight: 10
   - spriteLabel: Stage3
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage3_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 20
   - spriteLabel: Stage4
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage4_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 30
   - spriteLabel: Stage5
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage5_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 40
   - spriteLabel: Stage6
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage6_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 50
   - spriteLabel: Stage7
     brokenSpriteLabels: []
     duration: 2
     treeWeight: 0
+  weightDifferenceForBreakStage:
+  - 10
+  weightDifferenceForLose: 20
+  LoseTreePosition: {x: 0, y: -5, z: 0}
+  LoseTime: 3
 --- !u!1 &387961088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentEnergy: 0
-  EnergyBarTransf: {fileID: 0}
+  EnergyBarTransf: {fileID: 1388887135}
 --- !u!4 &2103545266
 Transform:
   m_ObjectHideFlags: 0
