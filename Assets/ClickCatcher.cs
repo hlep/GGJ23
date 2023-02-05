@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class ClickCatcher : MonoBehaviour
@@ -23,6 +24,9 @@ public class ClickCatcher : MonoBehaviour
 
     [SerializeField]
     GameObject ActiveRootSprite;
+
+    [SerializeField]
+    TMPro.TextMeshProUGUI m_Text;
 
     GameObject CreatedSprite = null;
 
@@ -118,10 +122,20 @@ public class ClickCatcher : MonoBehaviour
                 CreatedSprite = Instantiate(ActiveRootSprite, mousePosition, Quaternion.identity);
                 //ColliderWithSprite = collider;
             }
-
             else if ((!m_RootBuildingStarted && !collider) && CreatedSprite)
             {
                 Destroy(CreatedSprite);
+            }
+
+            collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Earth"));
+            if(m_RootBuildingStarted && collider)
+            {
+                float PreviewEnergy = m_EnergyManager.CurrentEnergy - m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(mousePosition, m_RootBuildingStartPosition));
+                m_Text.text = PreviewEnergy.ToString();
+            }
+            else
+            {
+                m_Text.text = "";
             }
         }
 

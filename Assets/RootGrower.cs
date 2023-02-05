@@ -17,8 +17,6 @@ public class RootGrower : MonoBehaviour
     [SerializeField]
     float MaxGrowSpeed = 0.09f;
 
-    float EnergyConsumptionPerDistance = 10;
-
     Vector3 m_rootEnd = Vector3.zero;
 
     bool m_finishedGrowing = false;
@@ -43,7 +41,7 @@ public class RootGrower : MonoBehaviour
 
             Vector3 NewPos = Vector3.Lerp(controller.spline.GetPosition(1), m_rootEnd, Mathf.SmoothStep(0f, 1f, Progress));
 
-            float EnergyConsumed = EnergyConsumptionPerDistance * Vector3.Distance(controller.spline.GetPosition(1), NewPos);
+            float EnergyConsumed = m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(controller.spline.GetPosition(1), NewPos));
 
             m_EnergyManager.ConsumeEnergy(EnergyConsumed);
 
