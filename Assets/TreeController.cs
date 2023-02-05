@@ -92,18 +92,18 @@ public class TreeController : MonoBehaviour
         }
     }
 
-    void startTree()
+    public void startTree()
     {
+        bTreeWorking = true;
         RequestStartTreeStage(0);
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Debug.Log("Tree not started!!!");
         StartTreePosition = transform.position;
-        bTreeWorking = true;
-        startTree();
+        // startTree();
     }
 
     void WinGame()

@@ -9,6 +9,7 @@ public class IntroComicsController : MonoBehaviour
     [SerializeField] private SpriteLibrary spriteLibrary;
     [SerializeField] private float spriteDuration;
     [SerializeField] private string[] labels;
+    [SerializeField] private TreeController treeController;
 
     private int currentStage = 0;
 
@@ -31,19 +32,11 @@ public class IntroComicsController : MonoBehaviour
 
         currentStage = stage;
 
-        // not the last stage
-        if (currentStage < labels.Length - 1)
-        {
-            spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), labels[currentStage]);
+        spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), labels[currentStage]);
+        
+        yield return new WaitForSeconds(spriteDuration);
 
-            yield return new WaitForSeconds(spriteDuration);
-
-            OnComicsStageEnded(stage);
-        }
-        else
-        {
-            EndComics();
-        }
+        OnComicsStageEnded(stage);
     }
 
     public void OnComicsStageEnded(int stage)
@@ -56,11 +49,17 @@ public class IntroComicsController : MonoBehaviour
         {
             RequestStartComicsStage(stage + 1);
         }
+        else
+        {
+            EndComics();
+        }
     }
 
     public void EndComics()
     {
-
+        SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = -1000;
+        treeController.startTree();
     }
 
     // Start is called before the first frame update
