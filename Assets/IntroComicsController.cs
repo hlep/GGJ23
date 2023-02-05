@@ -42,8 +42,7 @@ public class IntroComicsController : MonoBehaviour
         }
         else
         {
-            /*spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
-            WinGame();*/
+            EndComics();
         }
     }
 
@@ -59,10 +58,15 @@ public class IntroComicsController : MonoBehaviour
         }
     }
 
+    public void EndComics()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        R
+        RequestStartComicsStage(0);
     }
 
     // Update is called once per frame
