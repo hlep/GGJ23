@@ -37,8 +37,6 @@ public class EarthRandomizer : MonoBehaviour
     [SerializeField] private Vector2 cellSize;
     [SerializeField] private ShapeTangentMode shapeTangentMode = ShapeTangentMode.Continuous;
 
-    private bool bIsIslandGenerated = false;
-
     private Vector3[] leftPoints;
     private Vector3[] rightPoints;
 
@@ -213,7 +211,6 @@ public class EarthRandomizer : MonoBehaviour
         }
 
         m_EarthShape.RefreshSpriteShape();
-        bIsIslandGenerated = true;
     }
 
 

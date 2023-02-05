@@ -8,6 +8,8 @@ using UnityEngine;
 public struct MineralLayerSetup
 {
     [SerializeField] public int count;
+    [SerializeField] public float MaxDownOffset;
+    [SerializeField] public float MaxUpOffset;
 }
 
 [Serializable]
@@ -24,6 +26,7 @@ public class MineralManager : MonoBehaviour
     [SerializeField] private EarthRandomizer earthRandomizer;
     [SerializeField] private Vector3 StartPoint;
     [SerializeField] private float RowDistance;
+    [SerializeField] private float SideOffsetFromEarthBorder = 0;
     [SerializeField] MineralLayerSetup[] MineralLayersSetup;
 
     private MineralLayerState[] mineralLayerStates;
@@ -35,28 +38,32 @@ public class MineralManager : MonoBehaviour
         Vector3[] rightPoints = earthRandomizer.GetIslandRightPoints();
 
         mineralLayerStates = new MineralLayerState[earthRandomizer.GetRowsCount() - 1];
+
         for (int i = 0; i < earthRandomizer.GetRowsCount() - 1; i++)
         {
-            float minMineralX = (leftPoints[i].x + leftPoints[i + 1].x) / 2;
-            float maxMineralX = (rightPoints[i].x + rightPoints[i + 1].x) / 2;
-            float mineralY = StartPoint.y + i * RowDistance;
-
-            Debug.DrawLine(new Vector3(minMineralX, mineralY), new Vector3(maxMineralX, mineralY), Color.red, 20);
-
             if (i >= MineralLayersSetup.Length)
             {
                 Debug.LogWarning("No mineral setup for layer " + i);
-                continue;
+                break;
             }
+
+            float minMineralX = (leftPoints[i].x + leftPoints[i + 1].x) / 2 + SideOffsetFromEarthBorder;
+            float maxMineralX = (rightPoints[i].x + rightPoints[i + 1].x) / 2 - SideOffsetFromEarthBorder;
+            float baseMineralY = StartPoint.y + i * RowDistance;
+            float minMineralY = baseMineralY - MineralLayersSetup[i].MaxDownOffset;
+            float maxMineralY = baseMineralY + MineralLayersSetup[i].MaxUpOffset;
+
+            /*Debug.DrawLine(new Vector3(minMineralX, baseMineralY), new Vector3(maxMineralX, baseMineralY), Color.red, 20);
+            Debug.DrawLine(new Vector3(minMineralX, minMineralY), new Vector3(maxMineralX, minMineralY), Color.yellow, 20);
+            Debug.DrawLine(new Vector3(minMineralX, maxMineralY), new Vector3(maxMineralX, maxMineralY), Color.yellow, 20);*/
 
             for (int j = 0; j < MineralLayersSetup[i].count; j++)
             {
                 float mineralX = UnityEngine.Random.Range(minMineralX, maxMineralX);
+                float mineralY = UnityEngine.Random.Range(minMineralY, maxMineralY);
                 Vector3 mineralPoint = new Vector3(mineralX, mineralY);
                 Instantiate(MineralPrefab, mineralPoint, Quaternion.identity);
             }
-
-            
         }
     }
 

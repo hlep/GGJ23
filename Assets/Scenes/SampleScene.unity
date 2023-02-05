@@ -469,10 +469,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MineralPrefab: {fileID: 8918564102115639044, guid: 284808519fbe9594f962722430f96d67, type: 3}
   earthRandomizer: {fileID: 77248726}
-  StartPoint: {x: 0, y: -1, z: 0}
+  StartPoint: {x: 0, y: -1.5, z: 0}
   RowDistance: 1
+  SideOffsetFromEarthBorder: 0.5
   MineralLayersSetup:
+  - count: 7
+    MaxDownOffset: 0
+    MaxUpOffset: 0.3
+  - count: 6
+    MaxDownOffset: 0.2
+    MaxUpOffset: 0.2
+  - count: 4
+    MaxDownOffset: 0.3
+    MaxUpOffset: 0.2
   - count: 3
+    MaxDownOffset: 0.3
+    MaxUpOffset: 0.3
+  - count: 2
+    MaxDownOffset: 0.3
+    MaxUpOffset: 0.3
+  - count: 1
+    MaxDownOffset: 0.3
+    MaxUpOffset: 0
 --- !u!1 &310485924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,6 +1937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentEnergy: 0
+  EnergyBarTransf: {fileID: 0}
 --- !u!4 &2103545266
 Transform:
   m_ObjectHideFlags: 0
