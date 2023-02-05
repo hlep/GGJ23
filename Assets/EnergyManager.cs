@@ -6,13 +6,13 @@ public class EnergyManager : MonoBehaviour
 {
     float MaxEnergy = 100;
     public float CurrentEnergy = 0;
-    float EnergyRegenPerSec = 7;
-    float EnergyConsumptionPerDistance = 10;
+    float EnergyRegenPerSec = 3;
+    float EnergyConsumptionPerDistance = 30;
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentEnergy = MaxEnergy;
+        CurrentEnergy = 30;
     }
 
     // Update is called once per frame

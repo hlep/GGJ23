@@ -57,6 +57,13 @@ public class ClickCatcher : MonoBehaviour
                         return;
                     }
 
+                    float PreviewEnergy = m_EnergyManager.CurrentEnergy - m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(mousePosition, m_RootBuildingStartPosition));
+
+                    if (PreviewEnergy < 0)
+                    {
+                        return;
+                    }
+
                     Vector3 startPosWithOffset = Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f);
 
                     Vector3 lineIntersect;
