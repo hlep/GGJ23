@@ -105,6 +105,42 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 21300000, guid: cac809ae07cfdd44094c5cfce689d12c, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 5
+  - m_Name: Win
+    m_Hash: 143097238
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Slide1
+      m_Hash: 666764571
+      m_Sprite: {fileID: 21300000, guid: a59f20e168c22784195d91342a9754e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: a59f20e168c22784195d91342a9754e6, type: 3}
+    - m_Name: Slide2
+      m_Hash: 1052202145
+      m_Sprite: {fileID: 21300000, guid: 15c7178763bc4864ebe4a1785c9b61e5, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 15c7178763bc4864ebe4a1785c9b61e5, type: 3}
+    - m_Name: Slide3
+      m_Hash: 162554935
+      m_Sprite: {fileID: 21300000, guid: 7dc12946469ae3048b960e0e8d397516, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 7dc12946469ae3048b960e0e8d397516, type: 3}
+    - m_Name: Slide4
+      m_Hash: 399831444
+      m_Sprite: {fileID: 21300000, guid: df5430c600a2974418dba4a7129c448d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: df5430c600a2974418dba4a7129c448d, type: 3}
+    - m_Name: Slide5
+      m_Hash: 550748418
+      m_Sprite: {fileID: 21300000, guid: 7a8db2fa66fa7364a9be5009213d9e93, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 7a8db2fa66fa7364a9be5009213d9e93, type: 3}
+    - m_Name: Slide6
+      m_Hash: 970625208
+      m_Sprite: {fileID: 21300000, guid: b5adf58201acf7e43a2609193c38d130, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: b5adf58201acf7e43a2609193c38d130, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638112065475200261
+  m_ModificationHash: 638112083268466512
   m_Version: 1

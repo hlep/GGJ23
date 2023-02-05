@@ -26,6 +26,9 @@ public class TreeController : MonoBehaviour
     [SerializeField] private Vector3 LoseTreePosition;
     [SerializeField] private float LoseTime;
 
+    [SerializeField] private OutroComicsController winController;
+    [SerializeField] private OutroComicsController loseController;
+
     private bool bTreeWorking = false;
     private bool bIsLosingInProgress = false;
     private bool bLost = false;
@@ -76,6 +79,7 @@ public class TreeController : MonoBehaviour
         else
         {
             spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
+            yield return new WaitForSeconds(stagesSetup[currentTreeStage].duration);
             WinGame();
         }
     }
@@ -110,6 +114,7 @@ public class TreeController : MonoBehaviour
     {
         StopGame();
         bWon = true;
+        winController.StartComics();
     }
 
     void StopGame()
@@ -140,6 +145,7 @@ public class TreeController : MonoBehaviour
             transform.position = LoseTreePosition;
             bIsLosingInProgress = false;
             bLost = true;
+            // loseController.StartComics();
         }
         else
         {
