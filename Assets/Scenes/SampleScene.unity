@@ -663,8 +663,10 @@ MonoBehaviour:
   weightDifferenceForLose: 100
   LoseTreePosition: {x: 0, y: -5, z: 0}
   LoseTime: 2
-  winController: {fileID: 328696711}
+  winController: {fileID: 0}
   loseController: {fileID: 0}
+  currentWeight: 0
+  compensatedWeight: 5
 --- !u!1 &328696705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,6 +2201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cfbb22a790c5f4a9455fab8fca0f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treeController: {fileID: 310485929}
 --- !u!4 &1766320902
 Transform:
   m_ObjectHideFlags: 0
@@ -2339,7 +2342,7 @@ MonoBehaviour:
   - Slide3
   - Slide4
   - Slide5
-  treeController: {fileID: 310485929}
+  treeController: {fileID: 0}
 --- !u!4 &2069975427
 Transform:
   m_ObjectHideFlags: 0
