@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
@@ -10,7 +11,6 @@ public class ClickCatcher : MonoBehaviour
     Vector3 m_RootBuildingStartPosition;
     bool m_RootBuildingStarted = false;
     public GameObject rootPrefab;
-    //int m_LatestLayer = 0;
 
     [SerializeField]
     LineTracker m_LineTracker;
@@ -20,6 +20,13 @@ public class ClickCatcher : MonoBehaviour
 
     [SerializeField]
     EnergyManager m_EnergyManager;
+
+    [SerializeField]
+    GameObject ActiveRootSprite;
+
+    GameObject CreatedSprite = null;
+
+    Collider2D ColliderWithSprite = null;
 
 
     void Awake()
@@ -31,12 +38,11 @@ public class ClickCatcher : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 0.0f;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 0.0f;
 
             var collider = Physics2D.OverlapPoint(mousePosition, 1 <<
             LayerMask.NameToLayer(!m_RootBuildingStarted ? "Root" : "Earth"));
-
 
             if (collider)
             {
@@ -96,6 +102,26 @@ public class ClickCatcher : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 0.0f;
+
+            var collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Root"));
+
+            if (collider && collider != ColliderWithSprite && !m_RootBuildingStarted)
+            {
+                Destroy(CreatedSprite);
+                CreatedSprite = Instantiate(ActiveRootSprite, mousePosition, Quaternion.identity);
+                //ColliderWithSprite = collider;
+            }
+
+            else if ((!m_RootBuildingStarted && !collider) && CreatedSprite)
+            {
+                Destroy(CreatedSprite);
+            }
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -107,6 +133,7 @@ public class ClickCatcher : MonoBehaviour
     {
         m_RootBuildingStarted = false;
         m_RootBuildingStartPosition = Vector3.zero;
+        Destroy(CreatedSprite);
     }
 
     private void EndGrow()
