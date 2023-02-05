@@ -123,61 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &41399608
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 41399610}
-  - component: {fileID: 41399609}
-  m_Layer: 0
-  m_Name: MineralManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &41399609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41399608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490e8df433174b44bb73b96683249afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MineralPrefab: {fileID: 1330605801}
-  earthRandomizer: {fileID: 0}
-  StartPoint: {x: 0, y: 0, z: 0}
-  RowDistance: 0
-  MineralLayersSetup:
-  - count: 3
-  - count: 0
-  - count: 0
-  - count: 0
-  - count: 0
-  - count: 0
---- !u!4 &41399610
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41399608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9216764, y: -2.471934, z: 0.0036747903}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49952142
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +220,7 @@ GameObject:
   - component: {fileID: 77248727}
   - component: {fileID: 77248726}
   - component: {fileID: 77248730}
+  - component: {fileID: 77248731}
   m_Layer: 11
   m_Name: Earth Island
   m_TagString: Earth
@@ -509,6 +455,24 @@ PolygonCollider2D:
       - {x: 9, y: -2}
       - {x: -9, y: -2}
   m_UseDelaunayMesh: 0
+--- !u!114 &77248731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77248725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490e8df433174b44bb73b96683249afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MineralPrefab: {fileID: 8918564102115639044, guid: 284808519fbe9594f962722430f96d67, type: 3}
+  earthRandomizer: {fileID: 77248726}
+  StartPoint: {x: 0, y: 0.5, z: 0}
+  RowDistance: 1
+  MineralLayersSetup:
+  - count: 3
 --- !u!1 &310485924
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +728,7 @@ RectTransform:
   m_Children:
   - {fileID: 1180543631}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -929,7 +893,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663308781
 GameObject:
@@ -1369,11 +1333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
---- !u!1 &1330605801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8918564102115639044, guid: 284808519fbe9594f962722430f96d67, type: 3}
-  m_PrefabInstance: {fileID: 3875017898604480978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603937591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,64 +1775,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &3875017898604480978
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.814
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.5599
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253527129802256723, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918564102115639044, guid: 284808519fbe9594f962722430f96d67, type: 3}
-      propertyPath: m_Name
-      value: MineralPrefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 284808519fbe9594f962722430f96d67, type: 3}

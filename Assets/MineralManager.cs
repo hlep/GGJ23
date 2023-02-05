@@ -37,6 +37,12 @@ public class MineralManager : MonoBehaviour
         mineralLayerStates = new MineralLayerState[earthRandomizer.GetRowsCount() - 1];
         for (int i = 0; i < earthRandomizer.GetRowsCount() - 1; i++)
         {
+            if (i >= MineralLayersSetup.Length)
+            {
+                Debug.LogWarning("No mineral setup for layer " + i);
+                break;
+            }
+
             for (int j = 0; j < MineralLayersSetup[i].count; j++)
             {
                 float mineralX = UnityEngine.Random.Range((leftPoints[i].x + leftPoints[i + 1].x) / 2, (rightPoints[i].x + rightPoints[i + 1].x) / 2);
