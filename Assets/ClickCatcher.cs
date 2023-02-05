@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class ClickCatcher : MonoBehaviour
@@ -10,7 +12,6 @@ public class ClickCatcher : MonoBehaviour
     Vector3 m_RootBuildingStartPosition;
     bool m_RootBuildingStarted = false;
     public GameObject rootPrefab;
-    //int m_LatestLayer = 0;
 
     [SerializeField]
     LineTracker m_LineTracker;
@@ -20,6 +21,16 @@ public class ClickCatcher : MonoBehaviour
 
     [SerializeField]
     EnergyManager m_EnergyManager;
+
+    [SerializeField]
+    GameObject ActiveRootSprite;
+
+    [SerializeField]
+    TMPro.TextMeshProUGUI m_Text;
+
+    GameObject CreatedSprite = null;
+
+    Collider2D ColliderWithSprite = null;
 
 
     void Awake()
@@ -31,12 +42,11 @@ public class ClickCatcher : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 0.0f;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 0.0f;
 
             var collider = Physics2D.OverlapPoint(mousePosition, 1 <<
             LayerMask.NameToLayer(!m_RootBuildingStarted ? "Root" : "Earth"));
-
 
             if (collider)
             {
@@ -49,11 +59,13 @@ public class ClickCatcher : MonoBehaviour
 
                     Vector3 startPosWithOffset = Vector3.Lerp(m_RootBuildingStartPosition, mousePosition, 0.2f);
 
-                    if (m_LineTracker.CheckLineIntersect(startPosWithOffset, mousePosition))
+                    Vector3 lineIntersect;
+                    if (m_LineTracker.CheckLineIntersect(startPosWithOffset, mousePosition, out lineIntersect))
                     {
                         //do some warning?
                         StopRootBuilding();
                         print("Line intersect fail...");
+                        print(lineIntersect);
                         return;
                     }
 
@@ -96,6 +108,36 @@ public class ClickCatcher : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 0.0f;
+
+            var collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Root"));
+
+            if (collider && collider != ColliderWithSprite && !m_RootBuildingStarted)
+            {
+                Destroy(CreatedSprite);
+                CreatedSprite = Instantiate(ActiveRootSprite, mousePosition, Quaternion.identity);
+                //ColliderWithSprite = collider;
+            }
+            else if ((!m_RootBuildingStarted && !collider) && CreatedSprite)
+            {
+                Destroy(CreatedSprite);
+            }
+
+            collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Earth"));
+            if(m_RootBuildingStarted && collider)
+            {
+                float PreviewEnergy = m_EnergyManager.CurrentEnergy - m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(mousePosition, m_RootBuildingStartPosition));
+                m_Text.text = PreviewEnergy.ToString();
+            }
+            else
+            {
+                m_Text.text = "";
+            }
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -107,6 +149,7 @@ public class ClickCatcher : MonoBehaviour
     {
         m_RootBuildingStarted = false;
         m_RootBuildingStartPosition = Vector3.zero;
+        Destroy(CreatedSprite);
     }
 
     private void EndGrow()

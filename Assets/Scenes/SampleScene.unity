@@ -794,6 +794,7 @@ MonoBehaviour:
   m_LineTracker: {fileID: 1766320901}
   m_ActionsTracker: {fileID: 1749468269}
   m_EnergyManager: {fileID: 2103545265}
+  ActiveRootSprite: {fileID: 2245209530133475236, guid: fc1645c77f9d487489f1d28f962dbb40, type: 3}
 --- !u!4 &663308783
 Transform:
   m_ObjectHideFlags: 0

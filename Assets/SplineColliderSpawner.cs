@@ -30,7 +30,7 @@ public class SplineColliderSpawner : MonoBehaviour
 
         secondCollider = gameObject.AddComponent<CircleCollider2D>();
 
-        //secondCollider.includeLayers = LayerMask.GetMask("Root");
+        //secondCollider. = LayerMask.GetMask("Root");
 
         secondCollider.radius = radius;
         secondCollider.offset = secondPoint;

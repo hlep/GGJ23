@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnergyManager : MonoBehaviour
 {
     float MaxEnergy = 100;
-    float CurrentEnergy = 0;
+    public float CurrentEnergy = 0;
     float EnergyRegenPerSec = 7;
+    float EnergyConsumptionPerDistance = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +25,16 @@ public class EnergyManager : MonoBehaviour
     public void ConsumeEnergy(float energy)
     {
         CurrentEnergy -= energy;
+    }
+
+    public float GrowthEnergyCalc(float distance) 
+    {
+        return EnergyConsumptionPerDistance * distance;
+    }
+
+    public float PreviewEnergyConsumption(float energy)
+    {
+        float EnergyLeft = CurrentEnergy - energy;
+        return EnergyLeft;
     }
 }
