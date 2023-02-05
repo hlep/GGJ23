@@ -493,6 +493,7 @@ MonoBehaviour:
     MaxUpOffset: 0
   m_EnergyManager: {fileID: 2103545265}
   m_ActionsTracker: {fileID: 1749468269}
+  m_lineTracker: {fileID: 1766320901}
 --- !u!1 &310485924
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +554,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 4307dcef2f8fc7a42bcec254710f0552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1572,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708637, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708637, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
