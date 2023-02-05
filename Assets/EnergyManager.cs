@@ -10,16 +10,24 @@ public class EnergyManager : MonoBehaviour
     float EnergyConsumptionPerDistance = 30;
 
     [SerializeField]
-    RectTransform EnergyBarTransf;
+    RectTransform CurrentEnergyBarTransf;
+
+    [SerializeField]
+    RectTransform FutureEnergyBarTransf;
 
     float MaxEnergyBarY;
+
+    public bool IsPreviewing = false;
+
+    public float PreviewEnergy;
+
 
     //-1000 is min transform
 
     // Start is called before the first frame update
     void Start()
     {
-        MaxEnergyBarY = EnergyBarTransf.anchoredPosition.y;
+        MaxEnergyBarY = CurrentEnergyBarTransf.anchoredPosition.y;
     }
 
     // Update is called once per frame
@@ -32,7 +40,19 @@ public class EnergyManager : MonoBehaviour
 
         float yPos = Mathf.Lerp(-1000, MaxEnergyBarY, EnergyPercent);
 
-        EnergyBarTransf.anchoredPosition = new Vector2(EnergyBarTransf.anchoredPosition.x, yPos);
+        CurrentEnergyBarTransf.anchoredPosition = new Vector2(CurrentEnergyBarTransf.anchoredPosition.x, yPos);
+
+
+        if (IsPreviewing)
+        {
+            float PreviewEnergyPercent = Mathf.Clamp(PreviewEnergy / MaxEnergy, 0, 1);
+            float previewYPos = Mathf.Lerp(-1000, MaxEnergyBarY, EnergyPercent);
+            FutureEnergyBarTransf.anchoredPosition = new Vector2(FutureEnergyBarTransf.anchoredPosition.x, previewYPos);
+        }
+        else
+        {
+            FutureEnergyBarTransf.anchoredPosition = new Vector2(FutureEnergyBarTransf.anchoredPosition.x, yPos);
+        }
     }
 
     public void ConsumeEnergy(float energy)

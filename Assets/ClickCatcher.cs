@@ -137,11 +137,16 @@ public class ClickCatcher : MonoBehaviour
             collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Earth"));
             if(m_RootBuildingStarted && collider)
             {
+                m_EnergyManager.IsPreviewing = true;
+
                 float PreviewEnergy = m_EnergyManager.CurrentEnergy - m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(mousePosition, m_RootBuildingStartPosition));
                 m_Text.text = PreviewEnergy.ToString();
+
+                m_EnergyManager.PreviewEnergy = PreviewEnergy;
             }
             else
             {
+                m_EnergyManager.IsPreviewing = false;
                 m_Text.text = "";
             }
         }
