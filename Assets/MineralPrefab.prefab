@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7989895092185465478}
   - component: {fileID: 1976386078087973309}
   - component: {fileID: 5444078258664056208}
-  m_Layer: 0
+  - component: {fileID: 5285860990690114551}
+  m_Layer: 12
   m_Name: MineralPrefab
-  m_TagString: Untagged
+  m_TagString: Mineral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7989895092185465478
 SpriteRenderer:
@@ -135,3 +136,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.22
+--- !u!114 &5285860990690114551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8918564102115639044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852845eec1071474f94a4d3086b58fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveConsumptionSprite: {fileID: 2245209530133475236, guid: fc1645c77f9d487489f1d28f962dbb40, type: 3}
+  m_EnergyManager: {fileID: 0}
+  m_ActionsTracker: {fileID: 0}
+  EnergyStore: 100
+  EnergyConsumptionPerSecond: 10
+  IsTouched: 0
+  IsConsumingEnergy: 0

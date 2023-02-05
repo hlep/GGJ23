@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Earth
   - Root
+  - Mineral
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Root
   - Earth
-  - 
+  - Mineral
   - 
   - 
   - 

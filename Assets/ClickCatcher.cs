@@ -37,16 +37,18 @@ public class ClickCatcher : MonoBehaviour
     {
         m_Camera = Camera.main;
     }
+
     void Update()
     {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = 0.0f;
+
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            mousePosition.z = 0.0f;
-
-            var collider = Physics2D.OverlapPoint(mousePosition, 1 <<
-            LayerMask.NameToLayer(!m_RootBuildingStarted ? "Root" : "Earth"));
+            var collider = !m_RootBuildingStarted ?
+                Physics2D.OverlapPoint(mousePosition, (1 << LayerMask.NameToLayer("Root")) + (1 << LayerMask.NameToLayer("Mineral"))) :
+                Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Earth"));
 
             if (collider)
             {
@@ -97,30 +99,39 @@ public class ClickCatcher : MonoBehaviour
 
                     StopRootBuilding();
                 }
-
-                if (collider.gameObject.tag == "Root")
+                else if (collider.gameObject.tag == "Root")
                 {
                     Debug.Log("Start root building");
                     m_RootBuildingStarted = true;
                     m_RootBuildingStartPosition = mousePosition;
                     //start showing how much energy would we lose?
                 }
-            }
-            else
-            {
-                if (m_RootBuildingStarted)
+
+                else if (collider.gameObject.tag == "Mineral")
                 {
-                    StopRootBuilding();
-                    Debug.Log("Stop root building - clicked outside earth");
+                    //start consuming energy
+                    CrystalLogic logic = collider.gameObject.GetComponent<CrystalLogic>();
+                    if (logic.IsConsumingEnergy)
+                    {
+                        logic.StopConsumingEnergy();
+                    }
+                    else if (logic.CanStartConsumingEnergy())
+                    {
+                        logic.StartConsumingEnergy();
+                    }
+                }
+                else
+                {
+                    if (m_RootBuildingStarted)
+                    {
+                        StopRootBuilding();
+                        Debug.Log("Stop root building - clicked outside earth");
+                    }
                 }
             }
         }
         else
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            mousePosition.z = 0.0f;
-
             var collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Root"));
 
             if (collider && collider != ColliderWithSprite && !m_RootBuildingStarted)
@@ -135,13 +146,18 @@ public class ClickCatcher : MonoBehaviour
             }
 
             collider = Physics2D.OverlapPoint(mousePosition, 1 << LayerMask.NameToLayer("Earth"));
-            if(m_RootBuildingStarted && collider)
+            if (m_RootBuildingStarted && collider)
             {
+                m_EnergyManager.IsPreviewing = true;
+
                 float PreviewEnergy = m_EnergyManager.CurrentEnergy - m_EnergyManager.GrowthEnergyCalc(Vector3.Distance(mousePosition, m_RootBuildingStartPosition));
                 m_Text.text = PreviewEnergy.ToString();
+
+                m_EnergyManager.PreviewEnergy = PreviewEnergy;
             }
             else
             {
+                m_EnergyManager.IsPreviewing = false;
                 m_Text.text = "";
             }
         }
