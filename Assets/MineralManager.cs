@@ -31,6 +31,7 @@ public class MineralManager : MonoBehaviour
 
     [SerializeField] EnergyManager m_EnergyManager;
     [SerializeField] ActionsTracker m_ActionsTracker;
+    [SerializeField] LineTracker m_lineTracker;
 
     private MineralLayerState[] mineralLayerStates;
 
@@ -69,6 +70,7 @@ public class MineralManager : MonoBehaviour
                 CrystalLogic logic = spawned.GetComponent<CrystalLogic>();
                 logic.m_ActionsTracker = m_ActionsTracker;
                 logic.m_EnergyManager = m_EnergyManager;
+                m_lineTracker.CirlePairs.Add(new KeyValuePair<GameObject, Vector3>(spawned, mineralPoint));
             }
         }
     }
