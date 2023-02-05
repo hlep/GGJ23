@@ -109,10 +109,16 @@ public class ClickCatcher : MonoBehaviour
 
                 else if (collider.gameObject.tag == "Mineral")
                 {
-                    if (!m_ActionsTracker.HasFreeActions()) { return; }
                     //start consuming energy
                     CrystalLogic logic = collider.gameObject.GetComponent<CrystalLogic>();
-                    logic.StartConsumingEnergy();
+                    if (logic.IsConsumingEnergy)
+                    {
+                        logic.StopConsumingEnergy();
+                    }
+                    else if (logic.CanStartConsumingEnergy())
+                    {
+                        logic.StartConsumingEnergy();
+                    }
                 }
                 else
                 {

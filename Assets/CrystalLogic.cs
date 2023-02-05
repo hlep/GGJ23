@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CrystalLogic : MonoBehaviour
 {
+    [SerializeField]
+    GameObject ActiveConsumptionSprite;
 
     public EnergyManager m_EnergyManager;
 
@@ -12,7 +14,9 @@ public class CrystalLogic : MonoBehaviour
     public float EnergyStore = 100;
     public float EnergyConsumptionPerSecond = 10;
     public bool IsTouched = false;
-    bool IsConsumingEnergy = false;
+    public bool IsConsumingEnergy = false;
+
+    GameObject CreatedSprite = null;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +33,12 @@ public class CrystalLogic : MonoBehaviour
             float EnergyChange = Time.deltaTime * EnergyConsumptionPerSecond;
             EnergyStore -= EnergyChange;
             m_EnergyManager.ConsumeEnergy(-EnergyChange);
-        }
 
-        if(EnergyStore <= 0)
-        {
-            IsConsumingEnergy = false;
-            m_ActionsTracker.UpdateActions(1);
+            if (EnergyStore <= 0)
+            {
+                StopConsumingEnergy();
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -42,5 +46,19 @@ public class CrystalLogic : MonoBehaviour
     {
         IsConsumingEnergy = true;
         m_ActionsTracker.UpdateActions(-1);
+        CreatedSprite = Instantiate(ActiveConsumptionSprite, gameObject.transform);
+        CreatedSprite.gameObject.transform.localScale = Vector3.one;
+    }
+
+    public void StopConsumingEnergy()
+    {
+        IsConsumingEnergy = false;
+        m_ActionsTracker.UpdateActions(1);
+        Destroy(CreatedSprite);
+    }
+
+    public bool CanStartConsumingEnergy()
+    {
+        return EnergyStore > 0 && m_ActionsTracker.HasFreeActions();
     }
 }
