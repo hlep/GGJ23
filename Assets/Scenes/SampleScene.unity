@@ -632,27 +632,36 @@ MonoBehaviour:
   - spriteLabel: Stage2
     brokenSpriteLabels: []
     duration: 2
-    treeWeight: 0
+    treeWeight: 10
   - spriteLabel: Stage3
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage3_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 20
   - spriteLabel: Stage4
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage4_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 30
   - spriteLabel: Stage5
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage5_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 40
   - spriteLabel: Stage6
-    brokenSpriteLabels: []
+    brokenSpriteLabels:
+    - Stage6_fall1
     duration: 2
-    treeWeight: 0
+    treeWeight: 50
   - spriteLabel: Stage7
     brokenSpriteLabels: []
     duration: 2
     treeWeight: 0
+  weightDifferenceForBreakStage:
+  - 10
+  weightDifferenceForLose: 100
+  LoseTreePosition: {x: 0, y: -5, z: 0}
+  LoseTime: 2
 --- !u!1 &387961088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,19 +1456,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708610, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4544561
+      value: 1.3692652
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708610, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.33307618
+      value: 0.3401776
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708610, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3250225
+      value: 1.2672
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708610, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.659
+      value: -1.9381
       objectReference: {fileID: 0}
     - target: {fileID: 617457900901708610, guid: 7bb84bdf0898a0843af6c53744cf4749, type: 3}
       propertyPath: m_LocalPosition.z

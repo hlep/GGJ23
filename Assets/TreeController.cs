@@ -29,6 +29,7 @@ public class TreeController : MonoBehaviour
     private bool bTreeWorking = false;
     private bool bIsLosingInProgress = false;
     private bool bLost = false;
+    private bool bWon = false;
 
     private int currentTreeStage = -1;
     private int currentBreakStage = -1;
@@ -53,12 +54,30 @@ public class TreeController : MonoBehaviour
         print("Tree stage " + stage + " started");
 
         currentTreeStage = stage;
-        spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
-        currentWeight = stagesSetup[currentTreeStage].treeWeight;
 
-        yield return new WaitForSeconds(stagesSetup[currentTreeStage].duration);
+        // not the last stage
+        if (currentTreeStage < stagesSetup.Length - 1)
+        {
+            if (currentBreakStage == -1)
+            {
+                spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
+            }
+            else
+            {
+                UpdateBreakStage();
+            }
 
-        OnTreeStageEnded(stage);
+            currentWeight = stagesSetup[currentTreeStage].treeWeight;
+
+            yield return new WaitForSeconds(stagesSetup[currentTreeStage].duration);
+
+            OnTreeStageEnded(stage);
+        }
+        else
+        {
+            spriteResolver.SetCategoryAndLabel(spriteResolver.GetCategory(), stagesSetup[currentTreeStage].spriteLabel);
+            WinGame();
+        }
     }
 
     public void OnTreeStageEnded(int stage)
@@ -87,12 +106,28 @@ public class TreeController : MonoBehaviour
         startTree();
     }
 
+    void WinGame()
+    {
+        StopGame();
+        bWon = true;
+    }
+
+    void StopGame()
+    {
+        if (TreeStageCoroutine != null)
+        {
+            StopCoroutine(TreeStageCoroutine);
+            TreeStageCoroutine = null;
+        }
+        
+        bTreeWorking = false;
+    }
+
     void LoseGame()
     {
-        StopCoroutine(TreeStageCoroutine);
+        StopGame();
         loseStartTime = Time.time;
         bIsLosingInProgress = true;
-        bTreeWorking = false;
     }
 
     private float loseStartTime;
